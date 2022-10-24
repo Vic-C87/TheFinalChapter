@@ -53,14 +53,14 @@ public class NodeGrid : MonoBehaviour
         {
             for (int y = 0; y < myGridSizeY; y++)
             {
-                Vector3 worldPoint = worldBottomLeft + Vector3.right * (x * myNodeDiameter + myNodeRadius) + Vector3.up * (y * myNodeDiameter + myNodeRadius);
+                Vector3 worldPoint = worldBottomLeft + (Vector3.right * (x * myNodeDiameter + myNodeRadius) + Vector3.up * (y * myNodeDiameter + myNodeRadius));
                 bool walkable = !Physics2D.CircleCast(worldPoint, myNodeRadius, worldPoint, 0f, myUnwalkableMask);
 
                 int movementPenalty = 0;
 
                 RaycastHit2D[] hits;
 
-                hits = Physics2D.CircleCastAll(worldPoint, myNodeRadius, worldPoint, 0f, myWalkableMask);
+                hits = Physics2D.CircleCastAll(worldPoint, myNodeRadius, worldPoint, 1f, myWalkableMask);
                 if (hits.Length == 1)
                 {
                     movementPenalty = myRegions[hits[0].collider.gameObject.layer];

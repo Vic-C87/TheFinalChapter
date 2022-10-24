@@ -11,10 +11,14 @@ public class Ranged : Enemy
 
     bool myIsAttacking = false;
 
+    [SerializeField]
+    LayerMask myEnemyLayerMask;
+
     protected override void Start()
     {
         base.Start();
         myPathAI = GetComponent<Seeker>();
+        myEnemyLayerMask = ~(1 << LayerMask.NameToLayer("Enemies"));
     }
 
     void Update()
@@ -37,9 +41,10 @@ public class Ranged : Enemy
 
     void CheckLineOffSight()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, (myPlayer.position - transform.position).normalized);
+        
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, (myPlayer.position - transform.position).normalized, 20f, myEnemyLayerMask);
 
-        Debug.DrawRay(transform.position, (myPlayer.position - transform.position).normalized, Color.red);
+        Debug.DrawRay(transform.position, (myPlayer.position - transform.position), Color.red);
 
         if (hit.collider.CompareTag("Player"))
         {
