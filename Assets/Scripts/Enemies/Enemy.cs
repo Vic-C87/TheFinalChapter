@@ -13,6 +13,14 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     protected float myDamage;
 
+    [SerializeField]
+    protected Transform myPlayer;
+
+    protected virtual void Start()
+    {
+        myCurrentHP = myCurrentHP == 0 ? myMaxHP : myCurrentHP;
+        myPlayer = GameManager.myInstance.GetPlayer();
+    }
 
     public virtual void TakeDamage(float someDamage)
     {
