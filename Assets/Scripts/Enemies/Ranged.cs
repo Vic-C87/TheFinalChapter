@@ -13,6 +13,8 @@ public class Ranged : Enemy
 
     [SerializeField]
     LayerMask myEnemyLayerMask;
+    [SerializeField]
+    GameObject myProjectile;
 
     protected override void Start()
     {
@@ -36,6 +38,11 @@ public class Ranged : Enemy
             myIsAttacking = false;
 
         }
+
+        if (myIsAttacking)
+        {
+            Attack();
+        }
         CheckLineOffSight();
     }
 
@@ -57,6 +64,15 @@ public class Ranged : Enemy
 
         }
 
+    }
+
+    protected override void Attack()
+    {
+        if (CheckAttack())
+        {
+            GameObject projectile = Instantiate<GameObject>(myProjectile, transform.position, Quaternion.identity, GameManager.myInstance.transform);
+            projectile.GetComponent<Projectile>().SetDirection((myPlayer.transform.position - transform.position).normalized);
+        }
     }
 
 
