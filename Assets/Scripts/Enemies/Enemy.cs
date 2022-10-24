@@ -12,7 +12,19 @@ public class Enemy : MonoBehaviour
     protected float myMaxHP;
     [SerializeField]
     protected float myDamage;
+    [SerializeField]
+    protected float myAttackRate;
 
+    protected float myTimeSinceLastAttack = 0;
+
+    [SerializeField]
+    protected Transform myPlayer;
+
+    protected virtual void Start()
+    {
+        myCurrentHP = myCurrentHP == 0 ? myMaxHP : myCurrentHP;
+        myPlayer = GameManager.myInstance.GetPlayer();
+    }
 
     public virtual void TakeDamage(float someDamage)
     {
@@ -29,9 +41,9 @@ public class Enemy : MonoBehaviour
         myCurrentHP = myCurrentHP + anAmount > myMaxHP ? myMaxHP: myCurrentHP + anAmount;
     }
 
-    protected virtual float Attack()
+    protected virtual void Attack()
     {
-        return myDamage;
+        
     }
 
     protected virtual void Move()
@@ -42,5 +54,16 @@ public class Enemy : MonoBehaviour
     protected virtual void Die()
     {
         Debug.Log(myType + " died");
+    }
+
+    protected bool CheckAttack()
+    {
+        if (myAttackRate < Time.realtimeSinceStartup - myTimeSinceLastAttack)
+        {
+            myTimeSinceLastAttack = Time.realtimeSinceStartup;
+            return true;
+        }
+
+        return false;
     }
 }
