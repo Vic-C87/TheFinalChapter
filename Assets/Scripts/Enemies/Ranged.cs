@@ -2,42 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ranged : Enemy
+public class Ranged : Tracker
 {
-    Seeker myPathAI;
-
     [SerializeField]
     bool myFoundLineOfSight = false;
 
-    bool myIsAttacking = false;
-
-    [SerializeField]
-    LayerMask myEnemyLayerMask;
     [SerializeField]
     GameObject myProjectile;
 
     protected override void Start()
     {
         base.Start();
-        myPathAI = GetComponent<Seeker>();
-        myEnemyLayerMask = ~(1 << LayerMask.NameToLayer("Enemies"));
     }
 
     void Update()
     {
-        if (myFoundLineOfSight)
-        {
-            myPathAI.StopFollow();
-            myIsAttacking = true;
-            Debug.Log("Stopped!");
-            //Shoot player
-        }
-        else
-        {
-            myPathAI.Seek();
-            myIsAttacking = false;
-
-        }
+        CheckFollow(ref myFoundLineOfSight);
 
         if (myIsAttacking)
         {
@@ -53,17 +33,14 @@ public class Ranged : Enemy
 
         Debug.DrawRay(transform.position, (myPlayer.position - transform.position), Color.red);
 
-        if (hit.collider.CompareTag("Player"))
+        if (hit.collider.CompareTag("Obstacles"))
         {
-            
-            myFoundLineOfSight = true;
+            myFoundLineOfSight = false;
         }
         else
         {
-            myFoundLineOfSight = false;
-
+            myFoundLineOfSight = true;
         }
-
     }
 
     protected override void Attack()
@@ -71,9 +48,7 @@ public class Ranged : Enemy
         if (CheckAttack())
         {
             GameObject projectile = Instantiate<GameObject>(myProjectile, transform.position, Quaternion.identity, GameManager.myInstance.transform);
-            projectile.GetComponent<Projectile>().SetDirection((myPlayer.transform.position - transform.position).normalized);
+            projectile.GetComponent<Projectile>().SetDirection((myPlayer.transform.position - transform.position).normalized, myDamage);
         }
     }
-
-
 }
