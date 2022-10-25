@@ -43,3 +43,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 3457598251
+    locked: 0
+  - name: Objects
+    uniqueID: 3403518017
+    locked: 0
+  - name: Enemies
+    uniqueID: 1698609421
+    locked: 0
+  - name: Player
+    uniqueID: 3241074407
+    locked: 0
+  - name: Infront Objects
+    uniqueID: 924600019
+    locked: 0

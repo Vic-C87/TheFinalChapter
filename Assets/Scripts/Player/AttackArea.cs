@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AttackArea : MonoBehaviour
 {
-    public float damage = 5;
+    [SerializeField] float meleeDamage;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +23,7 @@ public class AttackArea : MonoBehaviour
         if (collision.GetComponent<Health>() != null)
         {
             Health healthScript = collision.GetComponent<Health>();
-            healthScript.health -= damage;
+            healthScript.health -= meleeDamage;
         }
     }
 }
