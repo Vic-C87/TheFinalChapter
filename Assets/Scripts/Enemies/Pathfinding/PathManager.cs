@@ -8,7 +8,7 @@ public class PathManager : MonoBehaviour
     Queue<PathRequest> myPathRequestQueue = new Queue<PathRequest>();
     PathRequest myCurrentPathRequest;
 
-    static PathManager myInstance;
+    public static PathManager myInstance;
 
     Pathfinding myPathfinding;
     bool myIsProcessingPath;
@@ -41,6 +41,7 @@ public class PathManager : MonoBehaviour
     {
         myCurrentPathRequest.myCallback(aPath, aSuccessMessage);
         myIsProcessingPath = false;
+        GameManager.myInstance.myIsFindingPath = false;
         TryProcessNext();
     }
 

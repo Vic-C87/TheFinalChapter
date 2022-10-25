@@ -37,10 +37,13 @@ public class Projectile : MonoBehaviour
         transform.position += (Vector3)myDirection * mySpeed * Time.deltaTime;
     }
 
-    public void SetDirection(Vector2 aDirection)
+    public void SetDirection(Vector2 aDirection, float aDamageAmount = 0)
     {
         myDirection = aDirection;
+        if (myDamage == 0)
+        myDamage = aDamageAmount;
     }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

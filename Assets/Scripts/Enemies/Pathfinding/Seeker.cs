@@ -15,11 +15,14 @@ public class Seeker : MonoBehaviour
     [SerializeField]
     int myTargetIndex;
     bool myIsSlowedDown = false;
+    [SerializeField]
+    bool myIsLurker = false;
 
     void Start()
     {
         myOriginalSpeed = mySpeed;
         myTarget = GameManager.myInstance.GetPlayer();
+        if(!myIsLurker)
         Seek();
     }
 
@@ -54,7 +57,9 @@ public class Seeker : MonoBehaviour
 
     public void StopFollow()
     {
-        StopCoroutine("FollowPath");
+        myTargetIndex = myPath.Length - 1;
+        //StopCoroutine("FollowPath");
+        
     }
 
     IEnumerator FollowPath()
