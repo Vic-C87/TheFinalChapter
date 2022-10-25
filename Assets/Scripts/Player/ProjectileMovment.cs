@@ -4,24 +4,52 @@ using UnityEngine;
 
 public class ProjectileMovment : MonoBehaviour
 {
-    public float projectileSpeed;
-    private PlayerMovment playerMovmentScript;
+    [SerializeField]
+    float mySpeed;
+    [SerializeField]
+    float myLifeTime;
+    [SerializeField]
+    float myDamage;
+
+    float myInstantiationTime;
+    Transform myPlayer;
+    Vector2 myDirection;
 
     // Start is called before the first frame update
     void Start()
     {
-        playerMovmentScript = GameObject.Find("Player").GetComponent<PlayerMovment>();
+        myInstantiationTime = Time.realtimeSinceStartup;
+        myPlayer = GameManager.myInstance.GetPlayer();
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector2.right * Time.deltaTime * projectileSpeed);
+
+        if (myLifeTime < Time.realtimeSinceStartup - myInstantiationTime)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
+    void FixedUpdate()
+    {
+        transform.position += (Vector3)myDirection * mySpeed * Time.deltaTime;
+    }
+
+    public void SetDirection(Vector2 aDirection)
+    {
+        myDirection = aDirection;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(gameObject);
+        if (collision.GetComponent<Health>() != null)
+        {
+            Health healthScript = collision.GetComponent<Health>();
+            healthScript.health -= myDamage;
+        }
+
+        Destroy(this.gameObject);
     }
 }
