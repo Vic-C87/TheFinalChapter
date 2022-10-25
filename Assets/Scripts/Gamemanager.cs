@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
     static public GameManager myInstance;
 
     Queue<Seeker> myEnemies = new Queue<Seeker>();
+    List<Seeker> myInactives = new List<Seeker>();
     public bool myIsFindingPath = false;
 
     [SerializeField]
@@ -33,21 +34,41 @@ public class GameManager : MonoBehaviour
         return myPlayer;
     }
 
+    public void DequeueMe(Seeker aSeeker)
+    {
+        if (!myInactives.Contains(aSeeker))
+        {
+            myInactives.Add(aSeeker);
+        }
+
+    }
+
     public void AddNewPathSeeker(Seeker aSeeker)
     {
         if (!myEnemies.Contains(aSeeker))
         {
+            if (myInactives.Contains(aSeeker))
+                myInactives.Remove(aSeeker);
             myEnemies.Enqueue(aSeeker);
         }
     }
 
     public void RequestNewPath()
     {
-        if (!myIsFindingPath && myEnemies.Count > 0)
+        if (/*!myIsFindingPath && */myEnemies.Count > 0)
         {
-            myEnemies.Dequeue().Seek();
+            Seeker seeker = myEnemies.Dequeue();
+            if (!myInactives.Contains(seeker))
+            seeker.Seek();
             myIsFindingPath = true;
         }
     }
+
+    public bool CheckIfActiveSeeker(Seeker aSeeker)
+    {
+        return !myInactives.Contains(aSeeker);
+    }
+
+
 
 }

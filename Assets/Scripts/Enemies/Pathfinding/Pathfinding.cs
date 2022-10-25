@@ -83,7 +83,7 @@ public class Pathfinding : MonoBehaviour
         {
             waypoints = RetracePath(startNode, targetNode);
         }
-        myPathManager.FinishedProcessingPath(waypoints, pathSuccess);
+        PathManager.myInstance.FinishedProcessingPath(waypoints, pathSuccess);
     }
 
     Vector3[] RetracePath(Node aStartNode, Node aTargetNode)
