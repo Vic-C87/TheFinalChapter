@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     Transform myPlayer;
 
+    List<Vector2> myWanderDirections = new List<Vector2>();
+
     void Awake()
     {
         if (myInstance != null && myInstance != this)
@@ -22,6 +24,7 @@ public class GameManager : MonoBehaviour
         {
             myInstance = this;
         }
+        CreateDirectionList();
     }
 
     private void Update()
@@ -67,6 +70,50 @@ public class GameManager : MonoBehaviour
     public bool CheckIfActiveSeeker(Seeker aSeeker)
     {
         return !myInactives.Contains(aSeeker);
+    }
+
+    public int GetRandomNumber(int aLowest, int aHighest)
+    {
+        return Random.Range(aLowest, aHighest +1);
+    }
+
+    public Vector2 GetWanderDirection()
+    {
+        Vector2 direction = new Vector2();
+        int randomizedDirectionChoice = GetRandomNumber(1,8);
+
+        direction = myWanderDirections[randomizedDirectionChoice];
+
+        return direction;
+    }
+
+    void CreateDirectionList()
+    {
+        Vector2 direction = new Vector2();
+
+        direction = new Vector2(-1,1);
+        myWanderDirections.Add(direction);
+
+        direction = new Vector2(0,1);
+        myWanderDirections.Add(direction);
+
+        direction = new Vector2(1, 1);
+        myWanderDirections.Add(direction);
+
+        direction = new Vector2(-1, 0);
+        myWanderDirections.Add(direction);
+
+        direction = new Vector2(1, 0);
+        myWanderDirections.Add(direction);
+
+        direction = new Vector2(-1, -1);
+        myWanderDirections.Add(direction);
+
+        direction = new Vector2(0, -1);
+        myWanderDirections.Add(direction);
+
+        direction = new Vector2(1, -1);
+        myWanderDirections.Add(direction);
     }
 
 

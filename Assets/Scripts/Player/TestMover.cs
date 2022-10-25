@@ -7,11 +7,12 @@ public class TestMover : MonoBehaviour
     [SerializeField]
     float mySpeed;
     [SerializeField]
-    Vector3 myDirection;
-    // Start is called before the first frame update
+    Vector2 myDirection;
+    Rigidbody2D myRigidbody;
+
     void Start()
     {
-        
+        myRigidbody = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -22,11 +23,11 @@ public class TestMover : MonoBehaviour
 
     void Move()
     {
-        float x = Input.GetAxis("Debug Horizontal");
-        float y = Input.GetAxis("Debug Vertical");
+        float x = Input.GetAxisRaw("Debug Horizontal");
+        float y = Input.GetAxisRaw("Debug Vertical");
 
-        myDirection = new Vector3(x, y, 0);
+        myDirection = new Vector2(x, y);
 
-        transform.position += myDirection * mySpeed * Time.deltaTime;
+        myRigidbody.velocity =  myDirection.normalized * mySpeed;
     }
 }
