@@ -109,25 +109,6 @@ public class Wilder : Enemy
         }
     }
 
-    void RunAway()
-    {
-        if (!myHaveRunDirection)
-        {
-            myRunDirection = (transform.position - myPlayer.transform.position).normalized;
-            myHaveRunDirection = true;
-        }
-        if (myActionTime > Time.realtimeSinceStartup - myActionTimeStamp)
-        {
-            CheckBounds(ref myRunDirection);
-            transform.Translate(myRunDirection * Time.deltaTime * (mySpeed *2));
-        }
-        else
-        {
-            myHaveRunDirection = false;
-            myHaveAction = false;
-        }
-    }
-
     void Wander()
     {
         if (!myHaveWanderDirection)

@@ -20,10 +20,25 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     protected Transform myPlayer;
 
+    protected SpriteRenderer mySpriteRenderer;
+
     protected virtual void Start()
     {
         myCurrentHP = myCurrentHP == 0 ? myMaxHP : myCurrentHP;
         myPlayer = GameManager.myInstance.GetPlayer();
+        mySpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+    }
+
+    protected virtual void Update()
+    {
+        if (myPlayer.position.x < transform.position.x)
+        {
+            mySpriteRenderer.flipX = false;
+        }
+        else
+        {
+            mySpriteRenderer.flipX = true;
+        }
     }
 
     public virtual void TakeDamage(float someDamage)

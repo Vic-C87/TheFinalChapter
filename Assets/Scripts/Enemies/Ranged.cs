@@ -15,8 +15,9 @@ public class Ranged : Tracker
         base.Start();
     }
 
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         CheckFollow(ref myFoundLineOfSight);
 
         if (myIsAttacking)

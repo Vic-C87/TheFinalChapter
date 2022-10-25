@@ -23,8 +23,9 @@ public class Lurker : Enemy
         
     }
 
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         if (myShouldFollow && !myPlayerIsClose)
         {
             //GameManager.myInstance.AddNewPathSeeker(myPathAI);
