@@ -33,6 +33,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     LayerMask myEnemyLayerMask;
     HUDManager myHUDManager;
+    [SerializeField]
+    ParticleSystem myParticleSystem;
     
     void Start()
     {
@@ -41,6 +43,7 @@ public class Player : MonoBehaviour
         myCurrentHP = myMaxHP;
         myHUDManager = GameManager.myInstance.GetHUDManager();
         myHUDManager.UpdateHealthBar();
+        //myParticleSystem = this.gameObject.GetComponentInChildren<ParticleSystem>();
     }
 
     void FixedUpdate()
@@ -57,6 +60,7 @@ public class Player : MonoBehaviour
     {
         myCurrentHP -= anAmount;
         myHUDManager.UpdateHealthBar();
+        myParticleSystem.Play();
         if (myCurrentHP <= 0)
         {
             myCurrentHP = 0;

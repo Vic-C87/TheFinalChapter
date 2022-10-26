@@ -24,6 +24,9 @@ public class Enemy : MonoBehaviour
 
     protected CircleCollider2D myCircleCollider;
 
+    [SerializeField]
+    ParticleSystem myParticleSystem;
+
     protected virtual void Start()
     {
         myCurrentHP = myCurrentHP == 0 ? myMaxHP : myCurrentHP;
@@ -47,6 +50,7 @@ public class Enemy : MonoBehaviour
     public virtual void TakeDamage(float someDamage)
     {
         myCurrentHP -= someDamage;
+        myParticleSystem.Play();
         if (myCurrentHP <= 0)
         {
             myCurrentHP = 0;
