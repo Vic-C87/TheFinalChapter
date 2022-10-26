@@ -399,9 +399,53 @@ PrefabInstance:
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 362663660, guid: 50965793c295af246a8d8ce25a3988c5, type: 3}
+      propertyPath: myDashTime
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 362663660, guid: 50965793c295af246a8d8ce25a3988c5, type: 3}
       propertyPath: myParticleSystem
       value: 
       objectReference: {fileID: 2105481826}
+    - target: {fileID: 362663661, guid: 50965793c295af246a8d8ce25a3988c5, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 362663661, guid: 50965793c295af246a8d8ce25a3988c5, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_ActionId
+      value: f2fd9bc4-1157-44b8-a165-a62d48a5bfdf
+      objectReference: {fileID: 0}
+    - target: {fileID: 362663661, guid: 50965793c295af246a8d8ce25a3988c5, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_ActionName
+      value: Player/Dash[/XInputControllerWindows/buttonWest]
+      objectReference: {fileID: 0}
+    - target: {fileID: 362663661, guid: 50965793c295af246a8d8ce25a3988c5, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 362663661, guid: 50965793c295af246a8d8ce25a3988c5, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 362663661, guid: 50965793c295af246a8d8ce25a3988c5, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 172511019}
+    - target: {fileID: 362663661, guid: 50965793c295af246a8d8ce25a3988c5, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 362663661, guid: 50965793c295af246a8d8ce25a3988c5, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GetDashInput
+      objectReference: {fileID: 0}
+    - target: {fileID: 362663661, guid: 50965793c295af246a8d8ce25a3988c5, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Player, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 362663661, guid: 50965793c295af246a8d8ce25a3988c5, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7641819379472912458, guid: 50965793c295af246a8d8ce25a3988c5, type: 3}
       propertyPath: playOnAwake
       value: 0
@@ -2328,7 +2372,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3025699946299219160, guid: 9c6c287d32cd8ae4ab94df9e4b81e2bc, type: 3}
       propertyPath: myMeleeAmountToSpawn
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3025699946299219160, guid: 9c6c287d32cd8ae4ab94df9e4b81e2bc, type: 3}
       propertyPath: myLurkerAmountToSpawn
@@ -2336,11 +2380,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3025699946299219160, guid: 9c6c287d32cd8ae4ab94df9e4b81e2bc, type: 3}
       propertyPath: myRangedAmountToSpawn
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3025699946299219160, guid: 9c6c287d32cd8ae4ab94df9e4b81e2bc, type: 3}
       propertyPath: myWilderAmountToSpawn
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3025699946299219161, guid: 9c6c287d32cd8ae4ab94df9e4b81e2bc, type: 3}
       propertyPath: m_RootOrder

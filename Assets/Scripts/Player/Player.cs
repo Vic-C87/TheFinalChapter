@@ -39,6 +39,12 @@ public class Player : MonoBehaviour
     [SerializeField]
     WeaponActions myWeaponActions;
 
+    [SerializeField]
+    float myDashTime;
+    float myDashTimeStamp;
+
+    bool myIsDashStarted = false;
+
     void Start()
     {
         myCollider = GetComponent<CircleCollider2D>();
@@ -48,6 +54,11 @@ public class Player : MonoBehaviour
         //myHUDManager.UpdateHealthBar();
         myWeaponActions = GetComponent<WeaponActions>();
         //myParticleSystem = this.gameObject.GetComponentInChildren<ParticleSystem>();
+    }
+
+    void Update()
+    {
+        CheckDashTime();
     }
 
     void FixedUpdate()
@@ -161,7 +172,7 @@ public class Player : MonoBehaviour
 
     public void GetAttackInput(InputAction.CallbackContext aCallbackContext)
     {
-        if (aCallbackContext.phase == InputActionPhase.Started)
+        if (aCallbackContext.phase == InputActionPhase.Performed)
         {
             if (myRangedWeaponActivated)
             {
@@ -171,6 +182,31 @@ public class Player : MonoBehaviour
             {
                 Hit();
             }
+        }
+    }
+
+    public void GetDashInput(InputAction.CallbackContext aCallbackContext)
+    {
+        if (aCallbackContext.phase == InputActionPhase.Started)
+        {
+            if (!myIsDashStarted)
+            {
+                myDashTimeStamp = Time.realtimeSinceStartup;
+                Debug.Log("Dashed");
+                mySpeed *= 10;
+                myIsDashStarted = true;
+            }
+        }
+        
+    }
+
+    void CheckDashTime()
+    {
+        if (myDashTime < Time.realtimeSinceStartup - myDashTimeStamp && myIsDashStarted)
+        {
+            Debug.Log("Stopped");
+            mySpeed /= 10;
+            myIsDashStarted = false;
         }
     }
 
