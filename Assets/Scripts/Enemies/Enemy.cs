@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
     protected float myTimeSinceLastAttack = 0;
 
     [SerializeField]
-    protected Transform myPlayer;
+    protected Player myPlayer;
 
     protected SpriteRenderer mySpriteRenderer;
 
@@ -34,7 +34,7 @@ public class Enemy : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (myPlayer.position.x < transform.position.x)
+        if (myPlayer.transform.position.x < transform.position.x)
         {
             mySpriteRenderer.flipX = false;
         }
@@ -72,6 +72,7 @@ public class Enemy : MonoBehaviour
     protected virtual void Die()
     {
         Debug.Log(myType + " died");
+        Destroy(this.gameObject);
     }
 
     protected bool CheckAttack()

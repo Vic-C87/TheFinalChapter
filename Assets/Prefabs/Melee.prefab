@@ -104,7 +104,7 @@ MonoBehaviour:
   mySpeed: 0
   myCurrentHP: 0
   myMaxHP: 50
-  myDamage: 0
+  myDamage: 2
   myAttackRate: 0
   myPlayer: {fileID: 0}
   myEnemyLayerMask:

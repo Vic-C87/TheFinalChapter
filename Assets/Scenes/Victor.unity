@@ -169,11 +169,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &362663656 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7993309173577656760, guid: 50965793c295af246a8d8ce25a3988c5, type: 3}
+--- !u!114 &362663660 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 362663660, guid: 50965793c295af246a8d8ce25a3988c5, type: 3}
   m_PrefabInstance: {fileID: 629252794}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1f24adff67868b4682f6e67c06fc801, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &629252794
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -181,18 +187,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4729851005220683319, guid: 50965793c295af246a8d8ce25a3988c5, type: 3}
-      propertyPath: m_GravityScale
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7511493767555104766, guid: 50965793c295af246a8d8ce25a3988c5, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7993309172385549153, guid: 50965793c295af246a8d8ce25a3988c5, type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: 7993309173577656760, guid: 50965793c295af246a8d8ce25a3988c5, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -237,17 +231,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7993309173577656761, guid: 50965793c295af246a8d8ce25a3988c5, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7993309173577656762, guid: 50965793c295af246a8d8ce25a3988c5, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7993309173577656762, guid: 50965793c295af246a8d8ce25a3988c5, type: 3}
-      propertyPath: m_Layer
-      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50965793c295af246a8d8ce25a3988c5, type: 3}
@@ -10210,7 +10196,7 @@ PrefabInstance:
     - target: {fileID: 2212086979539806167, guid: bb58410587f0cc64db269310c1231cdc, type: 3}
       propertyPath: myPlayer
       value: 
-      objectReference: {fileID: 362663656}
+      objectReference: {fileID: 362663660}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb58410587f0cc64db269310c1231cdc, type: 3}
 --- !u!1001 &3025699947253804440

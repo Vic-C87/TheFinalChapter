@@ -30,9 +30,9 @@ public class Ranged : Tracker
     void CheckLineOffSight()
     {
         
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, (myPlayer.position - transform.position).normalized, 20f, myEnemyLayerMask);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, (myPlayer.transform.position - transform.position).normalized, 20f, myEnemyLayerMask);
 
-        Debug.DrawRay(transform.position, (myPlayer.position - transform.position), Color.red);
+        Debug.DrawRay(transform.position, (myPlayer.transform.position - transform.position), Color.red);
 
         if (hit.collider.CompareTag("Obstacles"))
         {

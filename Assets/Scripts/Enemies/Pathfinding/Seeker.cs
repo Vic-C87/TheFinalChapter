@@ -21,7 +21,7 @@ public class Seeker : MonoBehaviour
     void Start()
     {
         myOriginalSpeed = mySpeed;
-        myTarget = GameManager.myInstance.GetPlayer();
+        myTarget = GameManager.myInstance.GetPlayer().transform;
         if(!myIsLurker)
         Seek();
     }

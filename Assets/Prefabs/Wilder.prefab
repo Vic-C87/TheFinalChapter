@@ -103,18 +103,16 @@ MonoBehaviour:
   mySpeed: 5
   myCurrentHP: 0
   myMaxHP: 50
-  myDamage: 0
+  myDamage: 2
   myAttackRate: 1
   myPlayer: {fileID: 0}
   myFoundLineOfSight: 0
   myHaveAction: 0
   myHaveWanderDirection: 0
-  myHaveRunDirection: 0
   myActionChoice: 0
   myActionTimeStamp: 0
   myActionTime: 1.5
   myWanderDirection: {x: 0, y: 0}
-  myRunDirection: {x: 0, y: 0}
   myProjectile: {fileID: 7673367092569420156, guid: ef575f3b37921024eaeb3054645be9e5, type: 3}
   myScreenXMinimum: -16
   myScreenXMaximum: 16

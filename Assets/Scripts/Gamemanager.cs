@@ -10,9 +10,11 @@ public class GameManager : MonoBehaviour
     public bool myIsFindingPath = false;
 
     [SerializeField]
-    Transform myPlayer;
+    Player myPlayer;
 
     List<Vector2> myWanderDirections = new List<Vector2>();
+
+    int myRandomizedDirectionChoice;
 
     void Awake()
     {
@@ -32,7 +34,7 @@ public class GameManager : MonoBehaviour
         RequestNewPath();
     }
 
-    public Transform GetPlayer()
+    public Player GetPlayer()
     {
         return myPlayer;
     }
@@ -80,9 +82,8 @@ public class GameManager : MonoBehaviour
     public Vector2 GetWanderDirection()
     {
         Vector2 direction = new Vector2();
-        int randomizedDirectionChoice = GetRandomNumber(1,8);
-
-        direction = myWanderDirections[randomizedDirectionChoice];
+        myRandomizedDirectionChoice = GetRandomNumber(0,7);
+        direction = myWanderDirections[myRandomizedDirectionChoice];
 
         return direction;
     }
