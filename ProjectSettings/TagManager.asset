@@ -49,7 +49,10 @@ TagManager:
   - name: Background 2
     uniqueID: 3403518017
     locked: 0
-  - name: Background 3
+  - name: Obstacles 1
+    uniqueID: 1919315485
+    locked: 0
+  - name: Obstacles 2
     uniqueID: 1970673541
     locked: 0
   - name: Enemies
