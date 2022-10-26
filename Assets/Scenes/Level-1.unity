@@ -394,6 +394,22 @@ PrefabInstance:
       propertyPath: myMaxHP
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 362663660, guid: 50965793c295af246a8d8ce25a3988c5, type: 3}
+      propertyPath: myParticleSystem
+      value: 
+      objectReference: {fileID: 2105481826}
+    - target: {fileID: 7641819379472912458, guid: 50965793c295af246a8d8ce25a3988c5, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7641819379710917060, guid: 50965793c295af246a8d8ce25a3988c5, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7641819379710917066, guid: 50965793c295af246a8d8ce25a3988c5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7993309173577656760, guid: 50965793c295af246a8d8ce25a3988c5, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -12475,3 +12491,8 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!198 &2105481826 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7641819379710917060, guid: 50965793c295af246a8d8ce25a3988c5, type: 3}
+  m_PrefabInstance: {fileID: 407462973}
+  m_PrefabAsset: {fileID: 0}
