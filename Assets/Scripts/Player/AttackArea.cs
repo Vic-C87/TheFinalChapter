@@ -5,11 +5,12 @@ using UnityEngine;
 public class AttackArea : MonoBehaviour
 {
     [SerializeField] float meleeDamage;
+    PlayerMovment playerMovmentScript;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        playerMovmentScript = GameObject.Find("Player").GetComponent<PlayerMovment>();
     }
 
     // Update is called once per frame
@@ -17,6 +18,8 @@ public class AttackArea : MonoBehaviour
     {
 
     }
+
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
