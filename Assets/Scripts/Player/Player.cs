@@ -32,9 +32,7 @@ public class Player : MonoBehaviour
     GameObject myProjectile;
     [SerializeField]
     LayerMask myEnemyLayerMask;
-
     
-    // Start is called before the first frame update
     void Start()
     {
         myCollider = GetComponent<CircleCollider2D>();
@@ -45,12 +43,6 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         Move();
-
-    }
-
-    void LateUpdate()
-    {
-        
     }
 
     public CircleCollider2D GetPlayerCollider()
