@@ -55,6 +55,7 @@ public class WeaponActions : MonoBehaviour
             myLeftFacingTransform.gameObject.SetActive(false);
             myRightFacingTransform.gameObject.SetActive(true);
             myIsFacingRight = true;
+            ActiveTransform().eulerAngles = new Vector3(0, 0, 0);
         }
     }
 
@@ -65,6 +66,7 @@ public class WeaponActions : MonoBehaviour
             myLeftFacingTransform.gameObject.SetActive(true);
             myRightFacingTransform.gameObject.SetActive(false);
             myIsFacingRight = false;
+            ActiveTransform().eulerAngles = new Vector3(0, 0, 0);
         }
     }
 
@@ -88,7 +90,7 @@ public class WeaponActions : MonoBehaviour
             {
                 Debug.Log("Stop");
                 myStartedWeponAction = false;
-                ActiveTransform().rotation = Quaternion.identity;
+                ActiveTransform().eulerAngles = new Vector3(0, 0, 0);
             }
         }
     }
@@ -129,6 +131,7 @@ public class WeaponActions : MonoBehaviour
         }
 
         myMeleeActivated = true;
+        ActiveTransform().eulerAngles = new Vector3(0, 0, 0);
     }
 
     public void BowActiveWeapon()
@@ -151,5 +154,6 @@ public class WeaponActions : MonoBehaviour
         }
 
         myMeleeActivated = false;
+        ActiveTransform().eulerAngles = new Vector3(0, 0, 0);
     }
 }
