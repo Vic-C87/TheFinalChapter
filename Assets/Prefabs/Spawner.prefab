@@ -51,11 +51,11 @@ MonoBehaviour:
   myRangedEnemy: {fileID: 8615194698438469618, guid: b82481f72a3861c4f995a27873267ad9, type: 3}
   myRangedAmountToSpawn: 2
   myMeleeEnemy: {fileID: 446665430018859319, guid: 62c04e84fbe4e5541b3ac1f73cb5baad, type: 3}
-  myMeleeAmountToSpawn: 2
+  myMeleeAmountToSpawn: 0
   myLurker: {fileID: 289805746192490158, guid: 8a27839ae4e760d45afdbb617541e2b6, type: 3}
   myLurkerAmountToSpawn: 2
   myWilder: {fileID: 5326345538348641123, guid: 1576ee2afb106aa44abe951869c1f214, type: 3}
-  myWilderAmountToSpawn: 2
+  myWilderAmountToSpawn: 0
   mySpawnPoints: []
 --- !u!1 &3025699946800661848
 GameObject:

@@ -10214,18 +10214,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spawner
       objectReference: {fileID: 0}
-    - target: {fileID: 3025699946299219160, guid: 9c6c287d32cd8ae4ab94df9e4b81e2bc, type: 3}
-      propertyPath: myMeleeAmountToSpawn
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3025699946299219160, guid: 9c6c287d32cd8ae4ab94df9e4b81e2bc, type: 3}
-      propertyPath: myLurkerAmountToSpawn
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3025699946299219160, guid: 9c6c287d32cd8ae4ab94df9e4b81e2bc, type: 3}
-      propertyPath: myWilderAmountToSpawn
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 3025699946299219161, guid: 9c6c287d32cd8ae4ab94df9e4b81e2bc, type: 3}
       propertyPath: m_RootOrder
       value: 3
