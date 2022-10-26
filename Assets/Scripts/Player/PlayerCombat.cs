@@ -28,6 +28,7 @@ public class PlayerCombat : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             attackArea.enabled = true;
+            attackArea.offset = playerMovmentScript.Direction;
             StartCoroutine(attackCooldown());
         }
 
