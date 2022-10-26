@@ -117,6 +117,9 @@ public class GameManager : MonoBehaviour
         myWanderDirections.Add(direction);
     }
 
-
+    public HUDManager GetHUDManager()
+    {
+        return GetComponent<HUDManager>();
+    }
 
 }

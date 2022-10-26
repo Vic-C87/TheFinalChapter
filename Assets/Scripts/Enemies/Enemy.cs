@@ -28,8 +28,8 @@ public class Enemy : MonoBehaviour
     {
         myCurrentHP = myCurrentHP == 0 ? myMaxHP : myCurrentHP;
         myPlayer = GameManager.myInstance.GetPlayer();
-        mySpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        myCircleCollider = gameObject.GetComponent<CircleCollider2D>();
+        mySpriteRenderer = GetComponent<SpriteRenderer>();
+        myCircleCollider = GetComponent<CircleCollider2D>();
     }
 
     protected virtual void Update()

@@ -9,10 +9,11 @@ public class Lurker : Enemy
     [SerializeField]
     protected LayerMask myEnemyLayerMask;
 
+    [SerializeField]
     protected bool myIsAttacking = false;
     [SerializeField]
     protected bool myShouldFollow = false;
-
+    [SerializeField]
     protected bool myPlayerIsClose = false;
 
     protected override void Start()
@@ -43,7 +44,7 @@ public class Lurker : Enemy
         base.Attack();
         if(CheckAttack())
         {
-            if (myCircleCollider.IsTouching(myPlayer.GetPlayerCollider()))
+            if (myCircleCollider.IsTouching((Collider2D)myPlayer.GetPlayerCollider()))
             {
                 myPlayer.TakeDamage(myDamage);
             }
@@ -76,6 +77,7 @@ public class Lurker : Enemy
             myPathAI.StopFollow();
             GameManager.myInstance.DequeueMe(myPathAI);
             myPlayerIsClose = true;
+            myIsAttacking = true;
         }
     }
 
@@ -84,6 +86,7 @@ public class Lurker : Enemy
         if (collision.gameObject.CompareTag("Player"))
         {
             myPlayerIsClose = false;
+            myIsAttacking = false;
         }
     }
 }

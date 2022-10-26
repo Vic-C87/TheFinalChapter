@@ -32,12 +32,15 @@ public class Player : MonoBehaviour
     GameObject myProjectile;
     [SerializeField]
     LayerMask myEnemyLayerMask;
+    HUDManager myHUDManager;
     
     void Start()
     {
         myCollider = GetComponent<CircleCollider2D>();
         myRigidbody = GetComponent<Rigidbody2D>();
         myCurrentHP = myMaxHP;
+        myHUDManager = GameManager.myInstance.GetHUDManager();
+        myHUDManager.UpdateHealthBar();
     }
 
     void FixedUpdate()
@@ -53,6 +56,7 @@ public class Player : MonoBehaviour
     public void TakeDamage(float anAmount)
     {
         myCurrentHP -= anAmount;
+        myHUDManager.UpdateHealthBar();
         if (myCurrentHP <= 0)
         {
             myCurrentHP = 0;
@@ -126,6 +130,7 @@ public class Player : MonoBehaviour
         if (aCallbackContext.phase == InputActionPhase.Performed)
         {
             myRangedWeaponActivated = !myRangedWeaponActivated;
+            myHUDManager.UpdateWeaponSlots();
         }
     }
 
@@ -142,5 +147,20 @@ public class Player : MonoBehaviour
                 Hit();
             }
         }
+    }
+
+    public bool GetIsRangedWeaponActivated()
+    {
+        return myRangedWeaponActivated;
+    }
+
+    public float GetMaxHP()
+    {
+        return myMaxHP;
+    }
+
+    public float GetCurrentHP()
+    {
+        return myCurrentHP;
     }
 }
