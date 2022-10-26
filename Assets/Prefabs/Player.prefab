@@ -123,9 +123,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.05, y: -0.5}
   serializedVersion: 2
-  m_Radius: 1.171875
+  m_Radius: 0.6
 --- !u!114 &362663660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,6 +148,7 @@ MonoBehaviour:
   myEnemyLayerMask:
     serializedVersion: 2
     m_Bits: 256
+  myParticleSystem: {fileID: 0}
 --- !u!114 &362663661
 MonoBehaviour:
   m_ObjectHideFlags: 0

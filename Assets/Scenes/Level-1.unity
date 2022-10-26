@@ -322,8 +322,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2212086979539806161, guid: bb58410587f0cc64db269310c1231cdc, type: 3}
+      propertyPath: myGridWorldSize.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2212086979539806161, guid: bb58410587f0cc64db269310c1231cdc, type: 3}
       propertyPath: myGridWorldSize.y
-      value: 20
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 2212086979539806161, guid: bb58410587f0cc64db269310c1231cdc, type: 3}
       propertyPath: myDisplayGridGizmos
@@ -1858,7 +1862,7 @@ GameObject:
   - component: {fileID: 1857309086}
   m_Layer: 7
   m_Name: Obstacles
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5299,7 +5303,7 @@ GameObject:
   - component: {fileID: 1957655240}
   m_Layer: 7
   m_Name: Obstacles behind
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
