@@ -31,6 +31,7 @@ public class Melee : Tracker
         {
             if (myCircleCollider.IsTouching((Collider2D)myPlayer.GetPlayerCollider()))
             {
+                Debug.Log("Player hit");
                 myPlayer.TakeDamage(myDamage);
             }
         }

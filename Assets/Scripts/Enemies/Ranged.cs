@@ -34,13 +34,16 @@ public class Ranged : Tracker
 
         Debug.DrawRay(transform.position, (myPlayer.transform.position - transform.position), Color.red);
 
-        if (hit.collider.CompareTag("Obstacles"))
+        if (hit.collider != null)
         {
-            myFoundLineOfSight = false;
-        }
-        else
-        {
-            myFoundLineOfSight = true;
+            if (hit.collider.CompareTag("Obstacles"))
+            {
+                myFoundLineOfSight = false;
+            }
+            else
+            {
+                myFoundLineOfSight = true;
+            }
         }
     }
 

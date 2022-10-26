@@ -60,7 +60,18 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(float anAmount)
     {
+        myCurrentHP -= anAmount;
+        if (myCurrentHP <= 0)
+        {
+            myCurrentHP = 0;
+            Die();
+        }
+    }
 
+    void Die()
+    {
+        Debug.Log("Player died...");
+        Time.timeScale = 0;
     }
 
     void Move()
