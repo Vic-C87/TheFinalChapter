@@ -41,6 +41,13 @@ public class Lurker : Enemy
     protected override void Attack()
     {
         base.Attack();
+        if(CheckAttack())
+        {
+            if (myCircleCollider.IsTouching(myPlayer.GetComponent<CircleCollider2D>()))
+            {
+                //Hurt Player
+            }
+        }
     }
 
     protected virtual void CheckFollow(ref bool aConditionToCheck)

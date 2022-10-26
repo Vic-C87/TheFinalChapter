@@ -11,8 +11,6 @@ public class Wilder : Enemy
     [SerializeField]
     bool myHaveWanderDirection = false;
     [SerializeField]
-    bool myHaveRunDirection = false;
-    [SerializeField]
     int myActionChoice;
     [SerializeField]
     float myActionTimeStamp;
@@ -21,8 +19,6 @@ public class Wilder : Enemy
     float myActionTime;
     [SerializeField]
     Vector2 myWanderDirection;
-    [SerializeField]
-    Vector2 myRunDirection;
 
     [SerializeField]
     GameObject myProjectile;
@@ -53,7 +49,7 @@ public class Wilder : Enemy
     {
         if (!myHaveAction)
         {
-            myActionChoice = GameManager.myInstance.GetRandomNumber(1, 3);
+            myActionChoice = GameManager.myInstance.GetRandomNumber(1, 2);
             myHaveAction = true;
             myActionTimeStamp = Time.realtimeSinceStartup;
         }
@@ -64,10 +60,6 @@ public class Wilder : Enemy
                 Wander();
                 break;
             case 2:
-                //RunAway();
-                myHaveAction = false;
-                break;
-            case 3:
                 Attack();
                 break;
             default:

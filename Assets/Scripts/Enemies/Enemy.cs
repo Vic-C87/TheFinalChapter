@@ -22,11 +22,14 @@ public class Enemy : MonoBehaviour
 
     protected SpriteRenderer mySpriteRenderer;
 
+    protected CircleCollider2D myCircleCollider;
+
     protected virtual void Start()
     {
         myCurrentHP = myCurrentHP == 0 ? myMaxHP : myCurrentHP;
         myPlayer = GameManager.myInstance.GetPlayer();
         mySpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        myCircleCollider = gameObject.GetComponent<CircleCollider2D>();
     }
 
     protected virtual void Update()
