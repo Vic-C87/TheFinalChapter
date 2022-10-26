@@ -2827,7 +2827,7 @@ GameObject:
   - component: {fileID: 1763305225}
   - component: {fileID: 1763305224}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: CameraFollow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94985,3 +94985,60 @@ ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 7641819379710917060, guid: 50965793c295af246a8d8ce25a3988c5, type: 3}
   m_PrefabInstance: {fileID: 407462973}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4264169222647148946
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 475021946604445484, guid: 4e4c6ef600836ee41a37144cd00535ac, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 475021946604445484, guid: 4e4c6ef600836ee41a37144cd00535ac, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 475021946604445484, guid: 4e4c6ef600836ee41a37144cd00535ac, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 475021946604445484, guid: 4e4c6ef600836ee41a37144cd00535ac, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 475021946604445484, guid: 4e4c6ef600836ee41a37144cd00535ac, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 475021946604445484, guid: 4e4c6ef600836ee41a37144cd00535ac, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 475021946604445484, guid: 4e4c6ef600836ee41a37144cd00535ac, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 475021946604445484, guid: 4e4c6ef600836ee41a37144cd00535ac, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 475021946604445484, guid: 4e4c6ef600836ee41a37144cd00535ac, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 475021946604445484, guid: 4e4c6ef600836ee41a37144cd00535ac, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 475021946604445484, guid: 4e4c6ef600836ee41a37144cd00535ac, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631422791668772977, guid: 4e4c6ef600836ee41a37144cd00535ac, type: 3}
+      propertyPath: m_Name
+      value: WeaponPickUpMall
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4e4c6ef600836ee41a37144cd00535ac, type: 3}

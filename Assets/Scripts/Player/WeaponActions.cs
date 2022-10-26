@@ -156,4 +156,14 @@ public class WeaponActions : MonoBehaviour
         myMeleeActivated = false;
         ActiveTransform().eulerAngles = new Vector3(0, 0, 0);
     }
+
+    public void SetRangedSprite(Sprite aWeaponSprite)
+    {
+        myBow = aWeaponSprite;
+    }
+
+    public void SetMeleeSprite(Sprite aWeaponSprite)
+    {
+        myKnife = aWeaponSprite;
+    }
 }

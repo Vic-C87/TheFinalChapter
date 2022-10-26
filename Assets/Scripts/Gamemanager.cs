@@ -123,3 +123,23 @@ public class GameManager : MonoBehaviour
     }
 
 }
+
+public struct SWeapon
+{
+    public string myWeaponName;
+    public bool myIsRanged;
+    public float myDamage;
+    public float myMeleeDistance;
+    public Sprite mySprite;
+    public Sprite myProjectileSprite;
+
+    public SWeapon(string aWeaponName, bool anIsRangedToggle, float someDamage, float aMeleeDistance, Sprite aSprite, Sprite aProjectileSprite)
+    {
+        myWeaponName = aWeaponName;
+        myIsRanged = anIsRangedToggle;
+        myDamage = someDamage;
+        myMeleeDistance = aMeleeDistance;
+        mySprite = aSprite;
+        myProjectileSprite = aProjectileSprite;
+    }
+}

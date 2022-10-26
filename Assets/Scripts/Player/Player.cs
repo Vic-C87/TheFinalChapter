@@ -210,6 +210,24 @@ public class Player : MonoBehaviour
         }
     }
 
+    void PickUpWeapon(SWeapon aWeapon)
+    {
+        if (aWeapon.myIsRanged)
+        {
+            myProjectileDamage = aWeapon.myDamage;
+            myWeaponActions.SetRangedSprite(aWeapon.mySprite);
+            //SetUISprite
+            //SetProjectileSprite
+        }
+        else
+        {
+            myDamage = aWeapon.myDamage;
+            myMeleeDistance = aWeapon.myMeleeDistance;
+            myWeaponActions.SetMeleeSprite(aWeapon.mySprite);
+            //SetUISprite
+        }
+    }
+
     public bool GetIsRangedWeaponActivated()
     {
         return myRangedWeaponActivated;
