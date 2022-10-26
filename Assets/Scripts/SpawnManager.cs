@@ -28,15 +28,12 @@ public class SpawnManager : MonoBehaviour
     void Start()
     {
         mySpawnPoints = GetComponentsInChildren<Transform>();
+        SpawnAll();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space ))
-        {
-            SpawnAll();
-        }
     }
 
     void SpawnAll()

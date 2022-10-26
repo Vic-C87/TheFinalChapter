@@ -26,9 +26,14 @@ public class Melee : Tracker
 
     protected override void Attack()
     {
+        base.Attack();
         if (CheckAttack())
         {
-            //Attack
+            if (myCircleCollider.IsTouching((Collider2D)myPlayer.GetPlayerCollider()))
+            {
+                Debug.Log("Player hit");
+                myPlayer.TakeDamage(myDamage);
+            }
         }
     }
 

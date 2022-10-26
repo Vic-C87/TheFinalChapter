@@ -47,10 +47,17 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player")) //Add condition for Obstacle to destroy projectile
+        if (collision.CompareTag("Player")) 
         {
-            //Do damage to Player
+            GameManager.myInstance.GetPlayer().TakeDamage(myDamage);
+            //Add hiteffect
             Destroy(this.gameObject);
         }
+        else if (collision.CompareTag("Obstacles"))
+        {
+            //Add hiteffect
+            Destroy(this.gameObject);
+        }
+
     }
 }

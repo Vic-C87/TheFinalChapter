@@ -43,9 +43,9 @@ public class Lurker : Enemy
         base.Attack();
         if(CheckAttack())
         {
-            if (myCircleCollider.IsTouching(myPlayer.GetComponent<CircleCollider2D>()))
+            if (myCircleCollider.IsTouching(myPlayer.GetPlayerCollider()))
             {
-                //Hurt Player
+                myPlayer.TakeDamage(myDamage);
             }
         }
     }

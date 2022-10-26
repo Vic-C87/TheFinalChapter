@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 289805745041993437}
   - component: {fileID: 289805745041993435}
   - component: {fileID: 289805745041993434}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: ProximityController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,11 +179,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e0b5b46b2abe644897399a26b9c35ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myType: 
+  myType: Lurker
   mySpeed: 0
   myCurrentHP: 0
   myMaxHP: 50
-  myDamage: 0
+  myDamage: 2
   myAttackRate: 1
   myPlayer: {fileID: 0}
   myEnemyLayerMask:

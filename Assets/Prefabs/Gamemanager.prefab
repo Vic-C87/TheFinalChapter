@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2212086979539806160}
   - component: {fileID: 2212086979539806161}
   m_Layer: 0
-  m_Name: Gamemanager
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myIsFindingPath: 0
-  myPlayer: {fileID: 0}
+  myPlayer: {fileID: 362663660, guid: 50965793c295af246a8d8ce25a3988c5, type: 3}
 --- !u!114 &2212086979539806163
 MonoBehaviour:
   m_ObjectHideFlags: 0
