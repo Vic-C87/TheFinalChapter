@@ -7,34 +7,23 @@ public class Seeker : MonoBehaviour
     public Transform myTarget;
     [SerializeField]
     float mySpeed = 5f;
-    float myOriginalSpeed;
-    float mySlowDownTime = 3f;
-    float myLastHitTime;
     [SerializeField]
     Vector3[] myPath;
     [SerializeField]
     int myTargetIndex;
-    bool myIsSlowedDown = false;
     [SerializeField]
     bool myIsLurker = false;
 
     void Start()
     {
-        myOriginalSpeed = mySpeed;
         myTarget = GameManager.myInstance.GetPlayer().transform;
-        if(!myIsLurker)
-        Seek();
+        OnSpawn();
     }
 
-    private void Update()
+    public void OnSpawn()
     {
-        if (myIsSlowedDown)
-        {
-            if (Time.realtimeSinceStartup - myLastHitTime >= mySlowDownTime)
-            {
-                SpeedUp();
-            }
-        }
+        if (!myIsLurker)
+            Seek();
     }
 
     public void Seek()
@@ -49,17 +38,16 @@ public class Seeker : MonoBehaviour
             myPath = aNewPath;
             myTargetIndex = 0;
             StopCoroutine("FollowPath");
-            StartCoroutine("FollowPath");
-
+            if (this.gameObject.activeSelf)
+            {
+                StartCoroutine("FollowPath");
+            }
         }
-
     }
 
     public void StopFollow()
     {
         myTargetIndex = myPath.Length - 1;
-        //StopCoroutine("FollowPath");
-        
     }
 
     IEnumerator FollowPath()
@@ -81,39 +69,6 @@ public class Seeker : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, currentWaypoint, mySpeed * Time.deltaTime);
             yield return null;
         }
-    }
-
-    bool PlayerIsFar()
-    {
-        if (Vector3.Distance(transform.position, myTarget.position) < 2)
-        {
-            return false;
-        }
-        else
-        {
-            return true;
-        }
-    }
-
-    public void SlowDown(float aSlowDownAmount)
-    {
-        if (!myIsSlowedDown)
-        {
-            float newSpeed = mySpeed - aSlowDownAmount;
-            mySpeed = Mathf.Clamp(newSpeed, 0f, myOriginalSpeed);
-            myIsSlowedDown = true;
-            myLastHitTime = Time.realtimeSinceStartup;
-        }
-        else
-        {
-            myLastHitTime = Time.realtimeSinceStartup;
-        }
-    }
-
-    public void SpeedUp()
-    {
-        mySpeed = myOriginalSpeed;
-        myIsSlowedDown = false;
     }
 
     private void OnDrawGizmos()

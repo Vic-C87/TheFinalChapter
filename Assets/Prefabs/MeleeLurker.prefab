@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 289805746192490152}
   - component: {fileID: 289805746192490155}
   - component: {fileID: 289805746192490154}
-  - component: {fileID: 773540574630406556}
+  - component: {fileID: 478309817843377841}
   m_Layer: 8
   m_Name: MeleeLurker
   m_TagString: Enemy
@@ -216,8 +216,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
---- !u!58 &773540574630406556
-CircleCollider2D:
+--- !u!70 &478309817843377841
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -230,8 +230,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.3}
-  serializedVersion: 2
-  m_Radius: 0.6
+  m_Size: {x: 0.7, y: 1.2}
+  m_Direction: 0
 --- !u!1 &8908556237325246184
 GameObject:
   m_ObjectHideFlags: 0

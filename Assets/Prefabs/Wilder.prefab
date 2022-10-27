@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 5326345538348641126}
   - component: {fileID: 5326345538348641125}
   - component: {fileID: 5326345538348641124}
-  - component: {fileID: 5326345538348641144}
   - component: {fileID: 5326345538348641127}
+  - component: {fileID: 2498364451289423047}
   m_Layer: 8
   m_Name: Wilder
   m_TagString: Enemy
@@ -120,22 +120,6 @@ MonoBehaviour:
   myScreenXMaximum: 16
   myScreenYMinimum: -8
   myScreenYMaximum: 8
---- !u!58 &5326345538348641144
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5326345538348641123}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.2}
-  serializedVersion: 2
-  m_Radius: 0.7
 --- !u!50 &5326345538348641127
 Rigidbody2D:
   serializedVersion: 4
@@ -157,6 +141,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!70 &2498364451289423047
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5326345538348641123}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.2}
+  m_Size: {x: 0.8, y: 1.5}
+  m_Direction: 0
 --- !u!1001 &2024480170406323943
 PrefabInstance:
   m_ObjectHideFlags: 0

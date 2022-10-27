@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     float myProjectileDamage;
 
-    CircleCollider2D myCollider;
+    CapsuleCollider2D myCollider;
     Rigidbody2D myRigidbody;
 
     Vector2 myAimDirection;
@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        myCollider = GetComponent<CircleCollider2D>();
+        myCollider = GetComponent<CapsuleCollider2D>();
         myRigidbody = GetComponent<Rigidbody2D>();
         myCurrentHP = myMaxHP;
         myHUDManager = GameManager.myInstance.GetHUDManager();
@@ -73,7 +73,7 @@ public class Player : MonoBehaviour
         Move();
     }
 
-    public CircleCollider2D GetPlayerCollider()
+    public CapsuleCollider2D GetPlayerCollider()
     {
         return myCollider;
     }

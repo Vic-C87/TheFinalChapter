@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 8615194698438469631}
   - component: {fileID: 8615194698438469625}
   - component: {fileID: 8615194698438469624}
-  - component: {fileID: 478292846684059336}
+  - component: {fileID: 4253139735539462885}
   m_Layer: 8
   m_Name: Ranged
   m_TagString: Enemy
@@ -237,8 +237,8 @@ MonoBehaviour:
   myPath: []
   myTargetIndex: 0
   myIsLurker: 0
---- !u!58 &478292846684059336
-CircleCollider2D:
+--- !u!70 &4253139735539462885
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -251,8 +251,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 1
+  m_Size: {x: 0.8, y: 1.7}
+  m_Direction: 0
 --- !u!1001 &3905257651711134773
 PrefabInstance:
   m_ObjectHideFlags: 0

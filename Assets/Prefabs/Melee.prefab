@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 446665430018859322}
   - component: {fileID: 446665430018859321}
   - component: {fileID: 446665430018859325}
-  - component: {fileID: 6577905743420749720}
+  - component: {fileID: 5558051350729733641}
   m_Layer: 8
   m_Name: Melee
   m_TagString: Enemy
@@ -151,8 +151,8 @@ MonoBehaviour:
   myPath: []
   myTargetIndex: 0
   myIsLurker: 0
---- !u!58 &6577905743420749720
-CircleCollider2D:
+--- !u!70 &5558051350729733641
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -165,8 +165,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.2}
-  serializedVersion: 2
-  m_Radius: 0.8
+  m_Size: {x: 0.8, y: 1.5}
+  m_Direction: 0
 --- !u!1 &7816736110334986090
 GameObject:
   m_ObjectHideFlags: 0

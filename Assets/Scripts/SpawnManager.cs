@@ -25,15 +25,10 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     Transform[] mySpawnPoints;
 
+
     void Start()
     {
         mySpawnPoints = GetComponentsInChildren<Transform>();
-        //SpawnAll();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
     }
 
     public void SpawnAll()
