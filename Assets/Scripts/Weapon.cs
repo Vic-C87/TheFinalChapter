@@ -18,11 +18,14 @@ public class Weapon : MonoBehaviour
     Sprite myProjectileSprite;
 
     SWeapon myWeapon;
+    SpriteRenderer mySpriteRenderer;
 
     // Start is called before the first frame update
     void Start()
     {
         myWeapon = new SWeapon(myWeaponName, myIsRanged, myDamage, myMeleeDistance, mySprite, myProjectileSprite);
+        mySpriteRenderer = GetComponent<SpriteRenderer>();
+        mySpriteRenderer.sprite = mySprite;
     }
 
     // Update is called once per frame
