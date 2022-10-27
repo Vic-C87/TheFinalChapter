@@ -134,9 +134,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myWeaponName: 
   myIsRanged: 0
-  myDamage: 0
-  myMeleeDistance: 0
-  mySprite: {fileID: 21300000, guid: 9b51fd01d8a302b41a7041e829ff19b2, type: 3}
+  myDamage: 9
+  myMeleeDistance: 2.5
+  mySprite: {fileID: 21300000, guid: 2e935d720ac8046448870d8a272cf86b, type: 3}
   myProjectileSprite: {fileID: 0}
   myPickUpText: {fileID: 4063727080956339121}
 --- !u!212 &1153081985396073415

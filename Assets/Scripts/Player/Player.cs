@@ -50,6 +50,9 @@ public class Player : MonoBehaviour
     Weapon myCurrentClosestWeapon = null;
     SpriteRenderer mySpriteRenderer;
 
+    [SerializeField]
+    SpawnManager mySpawnManager;
+
     void Start()
     {
         myCollider = GetComponent<CircleCollider2D>();
@@ -291,6 +294,14 @@ public class Player : MonoBehaviour
         if (collision.CompareTag("PickUp"))
         {
             DeActivatePickUpText();
+        }
+    }
+
+    public void GetSpawnInput(InputAction.CallbackContext aCallbackContext)
+    {
+        if (aCallbackContext.phase == InputActionPhase.Performed)
+        {
+            mySpawnManager.SpawnAll();
         }
     }
 }

@@ -311,9 +311,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myMaxHP: 50
   mySpeed: 5
-  myDamage: 5
+  myDamage: 7
   myMeleeDistance: 3.5
-  myProjectileDamage: 7
+  myProjectileDamage: 5
   myRangedWeaponActivated: 1
   myProjectile: {fileID: 7673367092569420156, guid: 805eb72d50c7c5a41861bd92d34caab7, type: 3}
   myEnemyLayerMask:
@@ -323,6 +323,7 @@ MonoBehaviour:
   myWeaponActions: {fileID: 0}
   myDashSpeed: 7
   myDashTime: 0.1
+  mySpawnManager: {fileID: 0}
 --- !u!114 &362663661
 MonoBehaviour:
   m_ObjectHideFlags: 0

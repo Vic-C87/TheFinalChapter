@@ -28,7 +28,7 @@ public class SpawnManager : MonoBehaviour
     void Start()
     {
         mySpawnPoints = GetComponentsInChildren<Transform>();
-        SpawnAll();
+        //SpawnAll();
     }
 
     // Update is called once per frame
@@ -36,7 +36,7 @@ public class SpawnManager : MonoBehaviour
     {
     }
 
-    void SpawnAll()
+    public void SpawnAll()
     {
         Spawn(myRangedEnemy, mySpawnPoints[1].position, ref myRangedAmountToSpawn);
         

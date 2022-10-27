@@ -184,7 +184,7 @@ MonoBehaviour:
   myType: Lurker
   mySpeed: 0
   myCurrentHP: 0
-  myMaxHP: 50
+  myMaxHP: 10
   myDamage: 2
   myAttackRate: 1
   myPlayer: {fileID: 0}
