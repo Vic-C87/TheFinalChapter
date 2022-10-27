@@ -31,7 +31,8 @@ public class WeaponActions : MonoBehaviour
     [SerializeField]
     float mySwingSpeed;
 
-    Vector3 mySwordSwingRotation = new Vector3(0, 0, 45);
+    Vector3 myRightFacingRotation = new Vector3(0, 0, 45);
+    Vector3 myLeftFacingRotation = new Vector3(0, 0, -45);
 
 
     // Start is called before the first frame update
@@ -40,6 +41,7 @@ public class WeaponActions : MonoBehaviour
         myLeftFacingTransform.gameObject.SetActive(false);
         myRightFacingTransform.gameObject.SetActive(true);
         BowActiveWeapon();
+        SetOriginalRotation();
     }
 
 
@@ -55,7 +57,7 @@ public class WeaponActions : MonoBehaviour
             myLeftFacingTransform.gameObject.SetActive(false);
             myRightFacingTransform.gameObject.SetActive(true);
             myIsFacingRight = true;
-            ActiveTransform().eulerAngles = new Vector3(0, 0, 0);
+            ActiveTransform().eulerAngles = myRightFacingRotation;
         }
     }
 
@@ -66,7 +68,7 @@ public class WeaponActions : MonoBehaviour
             myLeftFacingTransform.gameObject.SetActive(true);
             myRightFacingTransform.gameObject.SetActive(false);
             myIsFacingRight = false;
-            ActiveTransform().eulerAngles = new Vector3(0, 0, 0);
+            ActiveTransform().eulerAngles = myLeftFacingRotation;
         }
     }
 
@@ -90,7 +92,7 @@ public class WeaponActions : MonoBehaviour
             {
                 Debug.Log("Stop");
                 myStartedWeponAction = false;
-                ActiveTransform().eulerAngles = new Vector3(0, 0, 0);
+                SetOriginalRotation();
             }
         }
     }
@@ -99,8 +101,7 @@ public class WeaponActions : MonoBehaviour
     {
         myStartedWeponAction = true;
         myAttackTimeStamp = Time.realtimeSinceStartup;
-        ActiveTransform().eulerAngles = new Vector3(0, 0, 0);
-
+        SetOriginalRotation();
     }
 
     Transform ActiveTransform()
@@ -132,7 +133,7 @@ public class WeaponActions : MonoBehaviour
         }
 
         myMeleeActivated = true;
-        ActiveTransform().eulerAngles = new Vector3(0, 0, 0);
+        SetOriginalRotation();
     }
 
     public void BowActiveWeapon()
@@ -155,7 +156,7 @@ public class WeaponActions : MonoBehaviour
         }
 
         myMeleeActivated = false;
-        ActiveTransform().eulerAngles = new Vector3(0, 0, 0);
+        SetOriginalRotation();
     }
 
     public void SetRangedSprite(Sprite aWeaponSprite)
@@ -168,5 +169,17 @@ public class WeaponActions : MonoBehaviour
     {
         myKnife = aWeaponSprite;
         KnifeActiveWeapon();
+    }
+
+    void SetOriginalRotation()
+    {
+        if (myIsFacingRight)
+        {
+            ActiveTransform().eulerAngles = myRightFacingRotation;
+        }
+        else
+        {
+            ActiveTransform().eulerAngles = myLeftFacingRotation;
+        }
     }
 }

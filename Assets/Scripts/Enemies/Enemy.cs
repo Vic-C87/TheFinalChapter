@@ -39,11 +39,13 @@ public class Enemy : MonoBehaviour
     {
         if (myPlayer.transform.position.x < transform.position.x)
         {
-            mySpriteRenderer.flipX = false;
+            transform.localScale = new Vector3(1, 1, 1);
+            //mySpriteRenderer.flipX = false;
         }
         else
         {
-            mySpriteRenderer.flipX = true;
+            transform.localScale = new Vector3(-1, 1, 1);
+            //mySpriteRenderer.flipX = true;
         }
     }
 
