@@ -161,10 +161,12 @@ public class WeaponActions : MonoBehaviour
     public void SetRangedSprite(Sprite aWeaponSprite)
     {
         myBow = aWeaponSprite;
+        BowActiveWeapon();
     }
 
     public void SetMeleeSprite(Sprite aWeaponSprite)
     {
         myKnife = aWeaponSprite;
+        KnifeActiveWeapon();
     }
 }

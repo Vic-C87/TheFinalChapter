@@ -48,6 +48,7 @@ public class Player : MonoBehaviour
     bool myIsDashStarted = false;
 
     Weapon myCurrentClosestWeapon = null;
+    SpriteRenderer mySpriteRenderer;
 
     void Start()
     {
@@ -55,9 +56,8 @@ public class Player : MonoBehaviour
         myRigidbody = GetComponent<Rigidbody2D>();
         myCurrentHP = myMaxHP;
         myHUDManager = GameManager.myInstance.GetHUDManager();
-        //myHUDManager.UpdateHealthBar();
         myWeaponActions = GetComponent<WeaponActions>();
-        //myParticleSystem = this.gameObject.GetComponentInChildren<ParticleSystem>();
+        mySpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -100,10 +100,12 @@ public class Player : MonoBehaviour
         if (myAimDirection.x > 0)
         {
             myWeaponActions.TurnRight();
+            mySpriteRenderer.flipX = false;
         }
         else if (myAimDirection.x < 0)
         {
             myWeaponActions.TurnLeft();
+            mySpriteRenderer.flipX = true;
         }
     }
 
