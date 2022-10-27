@@ -4,35 +4,18 @@ using UnityEngine;
 
 public class Wilder : Enemy
 {
-    [SerializeField]
     bool myFoundLineOfSight = false;
-    [SerializeField]
     bool myHaveAction = false;
-    [SerializeField]
     bool myHaveWanderDirection = false;
-    [SerializeField]
     int myActionChoice;
-    [SerializeField]
     float myActionTimeStamp;
-
-    [SerializeField]
     float myActionTime;
-    [SerializeField]
     Vector2 myWanderDirection;
 
     [SerializeField]
     GameObject myProjectile;
 
-    protected LayerMask myEnemyLayerMask;
-
-    [SerializeField]
-    int myScreenXMinimum = -16;
-    [SerializeField]
-    int myScreenXMaximum = 16;
-    [SerializeField]
-    int myScreenYMinimum = -8;
-    [SerializeField]
-    int myScreenYMaximum = 8;
+    LayerMask myEnemyLayerMask;
 
     protected override void Start()
     {
@@ -113,7 +96,6 @@ public class Wilder : Enemy
         }
         if (myActionTime > Time.realtimeSinceStartup - myActionTimeStamp)
         {
-            CheckBounds(ref myWanderDirection);
             transform.Translate(myWanderDirection * Time.deltaTime * mySpeed);
         }
         else
@@ -122,26 +104,6 @@ public class Wilder : Enemy
             myHaveAction = false;
         }
 
-    }
-
-    void CheckBounds(ref Vector2 aDirection)
-    {
-        if (transform.position.x > myScreenXMaximum)
-        {
-            aDirection *= -1;
-        }
-        if (transform.position.y > myScreenYMaximum)
-        {
-            aDirection *= -1;
-        }
-        if (transform.position.x < myScreenXMinimum)
-        {
-            aDirection *= -1;
-        }
-        if (transform.position.y < myScreenYMinimum)
-        {
-            aDirection *= -1;
-        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

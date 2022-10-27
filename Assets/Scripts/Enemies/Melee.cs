@@ -29,7 +29,7 @@ public class Melee : Tracker
         base.Attack();
         if (CheckAttack())
         {
-            if (myCircleCollider.IsTouching((Collider2D)myPlayer.GetPlayerCollider()))
+            if (myCapsulecollider.IsTouching((Collider2D)myPlayer.GetPlayerCollider()))
             {
                 Debug.Log("Player hit");
                 myPlayer.TakeDamage(myDamage);

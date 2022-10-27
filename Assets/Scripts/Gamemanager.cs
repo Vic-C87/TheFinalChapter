@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
             myInstance = this;
         }
         CreateDirectionList();
+        myPlayer = FindObjectOfType<Player>();
     }
 
     private void Update()
@@ -63,9 +64,12 @@ public class GameManager : MonoBehaviour
         if (/*!myIsFindingPath && */myEnemies.Count > 0)
         {
             Seeker seeker = myEnemies.Dequeue();
-            if (!myInactives.Contains(seeker))
-            seeker.Seek();
-            myIsFindingPath = true;
+            if (seeker != null)
+            {
+                if (!myInactives.Contains(seeker))
+                seeker.Seek();
+                myIsFindingPath = true;
+            }
         }
     }
 
@@ -121,7 +125,6 @@ public class GameManager : MonoBehaviour
     {
         return GetComponent<HUDManager>();
     }
-
 }
 
 public struct SWeapon

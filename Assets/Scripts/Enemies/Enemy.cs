@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour
 
     protected SpriteRenderer mySpriteRenderer;
 
-    protected CircleCollider2D myCircleCollider;
+    protected CapsuleCollider2D myCapsulecollider;
 
     [SerializeField]
     ParticleSystem myParticleSystem;
@@ -32,18 +32,18 @@ public class Enemy : MonoBehaviour
         myCurrentHP = myCurrentHP == 0 ? myMaxHP : myCurrentHP;
         myPlayer = GameManager.myInstance.GetPlayer();
         mySpriteRenderer = GetComponent<SpriteRenderer>();
-        myCircleCollider = GetComponent<CircleCollider2D>();
+        myCapsulecollider = GetComponent<CapsuleCollider2D>();
     }
 
     protected virtual void Update()
     {
         if (myPlayer.transform.position.x < transform.position.x)
         {
-            mySpriteRenderer.flipX = false;
+            transform.localScale = new Vector3(1, 1, 1);
         }
         else
         {
-            mySpriteRenderer.flipX = true;
+            transform.localScale = new Vector3(-1, 1, 1);
         }
     }
 
@@ -76,7 +76,7 @@ public class Enemy : MonoBehaviour
     protected virtual void Die()
     {
         Debug.Log(myType + " died");
-        Destroy(this.gameObject);
+        this.gameObject.SetActive(false);
     }
 
     protected bool CheckAttack()

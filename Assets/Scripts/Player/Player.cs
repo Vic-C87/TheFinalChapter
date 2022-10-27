@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     float myProjectileDamage;
 
-    CircleCollider2D myCollider;
+    CapsuleCollider2D myCollider;
     Rigidbody2D myRigidbody;
 
     Vector2 myAimDirection;
@@ -50,9 +50,12 @@ public class Player : MonoBehaviour
     Weapon myCurrentClosestWeapon = null;
     SpriteRenderer mySpriteRenderer;
 
+    [SerializeField]
+    SpawnManager mySpawnManager;
+
     void Start()
     {
-        myCollider = GetComponent<CircleCollider2D>();
+        myCollider = GetComponent<CapsuleCollider2D>();
         myRigidbody = GetComponent<Rigidbody2D>();
         myCurrentHP = myMaxHP;
         myHUDManager = GameManager.myInstance.GetHUDManager();
@@ -70,7 +73,7 @@ public class Player : MonoBehaviour
         Move();
     }
 
-    public CircleCollider2D GetPlayerCollider()
+    public CapsuleCollider2D GetPlayerCollider()
     {
         return myCollider;
     }
@@ -291,6 +294,14 @@ public class Player : MonoBehaviour
         if (collision.CompareTag("PickUp"))
         {
             DeActivatePickUpText();
+        }
+    }
+
+    public void GetSpawnInput(InputAction.CallbackContext aCallbackContext)
+    {
+        if (aCallbackContext.phase == InputActionPhase.Performed)
+        {
+            mySpawnManager.SpawnAll();
         }
     }
 }

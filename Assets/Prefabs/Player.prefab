@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3744373565015018919}
   m_LocalRotation: {x: 0, y: 0, z: 0.38268343, w: 0.92387956}
-  m_LocalPosition: {x: 0.35, y: -0.35, z: 0}
+  m_LocalPosition: {x: 0.45, y: -0.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -70,9 +70,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1053892889
-  m_SortingLayer: 6
-  m_SortingOrder: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 6
   m_Sprite: {fileID: 21300000, guid: 364f852969700af45bb806c90de52927, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -109,7 +109,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5414122711202960631}
   m_LocalRotation: {x: 0, y: 0, z: -0.38268343, w: 0.92387956}
-  m_LocalPosition: {x: -0.35, y: -0.35, z: 0}
+  m_LocalPosition: {x: -0.45, y: -0.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -154,9 +154,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1053892889
-  m_SortingLayer: 6
-  m_SortingOrder: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 6
   m_Sprite: {fileID: 21300000, guid: 364f852969700af45bb806c90de52927, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -179,10 +179,10 @@ GameObject:
   - component: {fileID: 7993309173577656760}
   - component: {fileID: 7993309173577656761}
   - component: {fileID: 4729851005220683319}
-  - component: {fileID: 7511493767555104766}
   - component: {fileID: 362663660}
   - component: {fileID: 362663661}
   - component: {fileID: 8263094462975361244}
+  - component: {fileID: 5800280759320536171}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -246,9 +246,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1053892889
-  m_SortingLayer: 6
-  m_SortingOrder: 2
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: acd115a64320aeb4091471a021613f47, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -281,22 +281,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &7511493767555104766
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7993309173577656762}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.05, y: -0.5}
-  serializedVersion: 2
-  m_Radius: 0.6
 --- !u!114 &362663660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,9 +295,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myMaxHP: 50
   mySpeed: 5
-  myDamage: 5
+  myDamage: 7
   myMeleeDistance: 3.5
-  myProjectileDamage: 7
+  myProjectileDamage: 5
   myRangedWeaponActivated: 1
   myProjectile: {fileID: 7673367092569420156, guid: 805eb72d50c7c5a41861bd92d34caab7, type: 3}
   myEnemyLayerMask:
@@ -323,6 +307,7 @@ MonoBehaviour:
   myWeaponActions: {fileID: 0}
   myDashSpeed: 7
   myDashTime: 0.1
+  mySpawnManager: {fileID: 0}
 --- !u!114 &362663661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -444,6 +429,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: f15641f0-3554-4acb-964e-93eef1bcfc9d
     m_ActionName: Player/PickUpWeapon[/XInputControllerWindows/buttonNorth]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 362663660}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: GetSpawnInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a21c1de5-8985-47b3-84b6-9d2ca34ec0e2
+    m_ActionName: Player/Spawn[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -466,10 +467,26 @@ MonoBehaviour:
   myLeftFacingTransform: {fileID: 8757932011017366023}
   myRightFacingTransform: {fileID: 4381594251911894679}
   myKnife: {fileID: 21300000, guid: 364f852969700af45bb806c90de52927, type: 3}
-  myBow: {fileID: 21300000, guid: bc1421909475cd44481171b467b7d6a7, type: 3}
+  myBow: {fileID: 21300000, guid: 441f585a91e0d2f418e5fab7885b9efd, type: 3}
   myAttackDuration: 0.25
   myAttackTimeStamp: 0
   mySwingSpeed: 360
+--- !u!70 &5800280759320536171
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7993309173577656762}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.4}
+  m_Size: {x: 0.6, y: 1}
+  m_Direction: 0
 --- !u!1001 &2517127831059918929
 PrefabInstance:
   m_ObjectHideFlags: 0
