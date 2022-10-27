@@ -40,6 +40,8 @@ public class Player : MonoBehaviour
     WeaponActions myWeaponActions;
 
     [SerializeField]
+    float myDashSpeed;
+    [SerializeField]
     float myDashTime;
     float myDashTimeStamp;
 
@@ -195,7 +197,7 @@ public class Player : MonoBehaviour
             {
                 myDashTimeStamp = Time.realtimeSinceStartup;
                 Debug.Log("Dashed");
-                mySpeed *= 10;
+                mySpeed *= myDashSpeed;
                 myIsDashStarted = true;
             }
         }
@@ -218,7 +220,7 @@ public class Player : MonoBehaviour
         if (myDashTime < Time.realtimeSinceStartup - myDashTimeStamp && myIsDashStarted)
         {
             Debug.Log("Stopped");
-            mySpeed /= 10;
+            mySpeed /= myDashSpeed;
             myIsDashStarted = false;
         }
     }

@@ -246,10 +246,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 2dd65d2d91b1dc242b23e9cf756d125f, type: 3}
+  m_SortingLayerID: -1053892889
+  m_SortingLayer: 6
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: acd115a64320aeb4091471a021613f47, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -309,7 +309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1f24adff67868b4682f6e67c06fc801, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myMaxHP: 500
+  myMaxHP: 50
   mySpeed: 5
   myDamage: 5
   myMeleeDistance: 3.5
@@ -319,9 +319,10 @@ MonoBehaviour:
   myEnemyLayerMask:
     serializedVersion: 2
     m_Bits: 256
-  myParticleSystem: {fileID: 0}
+  myParticleSystem: {fileID: 7641819379710917060}
   myWeaponActions: {fileID: 0}
-  myDashTime: 0
+  myDashSpeed: 7
+  myDashTime: 0.1
 --- !u!114 &362663661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -412,9 +413,37 @@ MonoBehaviour:
     m_ActionId: 2aab8ffb-385f-4b11-8f93-b7798f41030e
     m_ActionName: Player/Attack[/XInputControllerWindows/rightTrigger]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 362663660}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: GetDashInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: f2fd9bc4-1157-44b8-a165-a62d48a5bfdf
     m_ActionName: Player/Dash[/XInputControllerWindows/buttonWest]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 362663660}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: GetPickUpInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: f15641f0-3554-4acb-964e-93eef1bcfc9d
+    m_ActionName: Player/PickUpWeapon[/XInputControllerWindows/buttonNorth]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -498,6 +527,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ae2460a2ecbac0449822d42ba6e1ca8, type: 3}
+--- !u!198 &7641819379710917060 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5252200271463713173, guid: 4ae2460a2ecbac0449822d42ba6e1ca8, type: 3}
+  m_PrefabInstance: {fileID: 2517127831059918929}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7641819379710917061 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5252200271463713172, guid: 4ae2460a2ecbac0449822d42ba6e1ca8, type: 3}
