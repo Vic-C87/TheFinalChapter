@@ -24,14 +24,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3744373565015018919}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: -0.2, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0.38268343, w: 0.92387956}
+  m_LocalPosition: {x: 0.35, y: -0.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7993309173577656760}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
 --- !u!212 &6995625590292116888
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -73,9 +73,9 @@ SpriteRenderer:
   m_SortingLayerID: -1053892889
   m_SortingLayer: 6
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7c1c89a4412e77c41b46c2ddf9c3d2c6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 364f852969700af45bb806c90de52927, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.64, y: 0.96}
@@ -108,14 +108,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5414122711202960631}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.5, y: -0.2, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: -0.38268343, w: 0.92387956}
+  m_LocalPosition: {x: -0.35, y: -0.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7993309173577656760}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -45}
 --- !u!212 &7986670019347901456
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -157,9 +157,9 @@ SpriteRenderer:
   m_SortingLayerID: -1053892889
   m_SortingLayer: 6
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7c1c89a4412e77c41b46c2ddf9c3d2c6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 364f852969700af45bb806c90de52927, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.64, y: 0.96}
@@ -465,7 +465,7 @@ MonoBehaviour:
   myRightFacingSpriteRenderer: {fileID: 6995625590292116888}
   myLeftFacingTransform: {fileID: 8757932011017366023}
   myRightFacingTransform: {fileID: 4381594251911894679}
-  myKnife: {fileID: 21300000, guid: 7c1c89a4412e77c41b46c2ddf9c3d2c6, type: 3}
+  myKnife: {fileID: 21300000, guid: 364f852969700af45bb806c90de52927, type: 3}
   myBow: {fileID: 21300000, guid: bc1421909475cd44481171b467b7d6a7, type: 3}
   myAttackDuration: 0.25
   myAttackTimeStamp: 0
