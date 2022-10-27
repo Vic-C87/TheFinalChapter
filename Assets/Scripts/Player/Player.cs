@@ -45,6 +45,8 @@ public class Player : MonoBehaviour
 
     bool myIsDashStarted = false;
 
+    Weapon myCurrentClosestWeapon = null;
+
     void Start()
     {
         myCollider = GetComponent<CircleCollider2D>();
@@ -197,7 +199,18 @@ public class Player : MonoBehaviour
                 myIsDashStarted = true;
             }
         }
-        
+    }
+
+    public void GetPickUpInput(InputAction.CallbackContext aCallbackContext)
+    {
+        if (aCallbackContext.phase == InputActionPhase.Performed)
+        {
+            if (myCurrentClosestWeapon != null)
+            {
+                PickUpWeapon(myCurrentClosestWeapon.PickUpWeapon());
+                myHUDManager.UpdateWeaponSlots();
+            }
+        }
     }
 
     void CheckDashTime()
@@ -210,13 +223,13 @@ public class Player : MonoBehaviour
         }
     }
 
-    void PickUpWeapon(SWeapon aWeapon)
+    public void PickUpWeapon(SWeapon aWeapon)
     {
         if (aWeapon.myIsRanged)
         {
             myProjectileDamage = aWeapon.myDamage;
             myWeaponActions.SetRangedSprite(aWeapon.mySprite);
-            //SetUISprite
+            myHUDManager.SetNewRangedWeaponSprite(aWeapon.mySprite);
             //SetProjectileSprite
         }
         else
@@ -224,7 +237,7 @@ public class Player : MonoBehaviour
             myDamage = aWeapon.myDamage;
             myMeleeDistance = aWeapon.myMeleeDistance;
             myWeaponActions.SetMeleeSprite(aWeapon.mySprite);
-            //SetUISprite
+            myHUDManager.SetNewMeleeSprite(aWeapon.mySprite);
         }
     }
 
@@ -241,5 +254,39 @@ public class Player : MonoBehaviour
     public float GetCurrentHP()
     {
         return myCurrentHP;
+    }
+
+    void SetCurrentClosestWeaponToPickUp(Weapon aWeaponObject)
+    {
+        if (myCurrentClosestWeapon != null)
+        {
+            myCurrentClosestWeapon.ActivatePickUpText(false);
+        }
+
+        myCurrentClosestWeapon = aWeaponObject;
+        myCurrentClosestWeapon.ActivatePickUpText(true);
+    }
+
+    void DeActivatePickUpText()
+    {
+        myCurrentClosestWeapon.ActivatePickUpText(false);
+        myCurrentClosestWeapon = null;
+    }
+ 
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("PickUp"))
+        {
+            SetCurrentClosestWeaponToPickUp(collision.GetComponent<Weapon>());
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("PickUp"))
+        {
+            DeActivatePickUpText();
+        }
     }
 }

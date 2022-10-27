@@ -56,4 +56,14 @@ public class HUDManager : MonoBehaviour
             mySecondaryWeaponSlot.sprite = myRangedWeaponSprite;
         }
     }
+
+    public void SetNewMeleeSprite(Sprite aWeaponSprite)
+    {
+        myMeleeWeaponSprite = aWeaponSprite;
+    }
+
+    public void SetNewRangedWeaponSprite(Sprite aWeaponSprite)
+    {
+        myRangedWeaponSprite = aWeaponSprite;
+    }
 }
