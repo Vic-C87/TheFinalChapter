@@ -248,7 +248,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 2dd65d2d91b1dc242b23e9cf756d125f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -321,6 +321,7 @@ MonoBehaviour:
     m_Bits: 256
   myParticleSystem: {fileID: 0}
   myWeaponActions: {fileID: 0}
+  myDashTime: 0
 --- !u!114 &362663661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -410,6 +411,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 2aab8ffb-385f-4b11-8f93-b7798f41030e
     m_ActionName: Player/Attack[/XInputControllerWindows/rightTrigger]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f2fd9bc4-1157-44b8-a165-a62d48a5bfdf
+    m_ActionName: Player/Dash[/XInputControllerWindows/buttonWest]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
