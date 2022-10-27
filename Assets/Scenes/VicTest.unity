@@ -403,6 +403,10 @@ PrefabInstance:
       value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 362663660, guid: 50965793c295af246a8d8ce25a3988c5, type: 3}
+      propertyPath: myDashSpeed
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 362663660, guid: 50965793c295af246a8d8ce25a3988c5, type: 3}
       propertyPath: myParticleSystem
       value: 
       objectReference: {fileID: 2105481826}
@@ -2408,19 +2412,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3025699946299219160, guid: 9c6c287d32cd8ae4ab94df9e4b81e2bc, type: 3}
       propertyPath: myMeleeAmountToSpawn
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3025699946299219160, guid: 9c6c287d32cd8ae4ab94df9e4b81e2bc, type: 3}
       propertyPath: myLurkerAmountToSpawn
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3025699946299219160, guid: 9c6c287d32cd8ae4ab94df9e4b81e2bc, type: 3}
       propertyPath: myRangedAmountToSpawn
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3025699946299219160, guid: 9c6c287d32cd8ae4ab94df9e4b81e2bc, type: 3}
       propertyPath: myWilderAmountToSpawn
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3025699946299219161, guid: 9c6c287d32cd8ae4ab94df9e4b81e2bc, type: 3}
       propertyPath: m_RootOrder
@@ -2468,11 +2472,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3025699946800661849, guid: 9c6c287d32cd8ae4ab94df9e4b81e2bc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.55
+      value: 6.02
       objectReference: {fileID: 0}
     - target: {fileID: 3025699946800661849, guid: 9c6c287d32cd8ae4ab94df9e4b81e2bc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.22
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3025699947312444423, guid: 9c6c287d32cd8ae4ab94df9e4b81e2bc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -31631,7 +31635,7 @@ CompositeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_GeometryType: 0
   m_GenerationType: 0
-  m_EdgeRadius: 0.1
+  m_EdgeRadius: 0.2
   m_ColliderPaths:
   - m_Collider: {fileID: 1957655240}
     m_ColliderPaths:
