@@ -99,6 +99,7 @@ public class WeaponActions : MonoBehaviour
     {
         myStartedWeponAction = true;
         myAttackTimeStamp = Time.realtimeSinceStartup;
+        ActiveTransform().eulerAngles = new Vector3(0, 0, 0);
 
     }
 
