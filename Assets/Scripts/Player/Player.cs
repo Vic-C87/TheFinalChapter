@@ -35,15 +35,30 @@ public class Player : MonoBehaviour
     HUDManager myHUDManager;
     [SerializeField]
     ParticleSystem myParticleSystem;
-    
+
+    [SerializeField]
+    WeaponActions myWeaponActions;
+
+    [SerializeField]
+    float myDashTime;
+    float myDashTimeStamp;
+
+    bool myIsDashStarted = false;
+
     void Start()
     {
         myCollider = GetComponent<CircleCollider2D>();
         myRigidbody = GetComponent<Rigidbody2D>();
         myCurrentHP = myMaxHP;
         myHUDManager = GameManager.myInstance.GetHUDManager();
-        myHUDManager.UpdateHealthBar();
+        //myHUDManager.UpdateHealthBar();
+        myWeaponActions = GetComponent<WeaponActions>();
         //myParticleSystem = this.gameObject.GetComponentInChildren<ParticleSystem>();
+    }
+
+    void Update()
+    {
+        CheckDashTime();
     }
 
     void FixedUpdate()
@@ -77,7 +92,15 @@ public class Player : MonoBehaviour
     void Move()
     {
         if (myIsMoving)
-        myRigidbody.velocity = myMoveDirection * mySpeed;
+            myRigidbody.velocity = myMoveDirection * mySpeed;
+        if (myAimDirection.x > 0)
+        {
+            myWeaponActions.TurnRight();
+        }
+        else if (myAimDirection.x < 0)
+        {
+            myWeaponActions.TurnLeft();
+        }
     }
 
     void Shoot()
@@ -101,6 +124,7 @@ public class Player : MonoBehaviour
                 hit.collider.GetComponent<Enemy>().TakeDamage(myDamage);
             }
         }
+        myWeaponActions.StartAttack();
     }
 
     public void GetMovementInput(InputAction.CallbackContext aCallbackContext)
@@ -135,12 +159,20 @@ public class Player : MonoBehaviour
         {
             myRangedWeaponActivated = !myRangedWeaponActivated;
             myHUDManager.UpdateWeaponSlots();
+            if (myRangedWeaponActivated)
+            {
+                myWeaponActions.BowActiveWeapon();
+            }
+            else
+            {
+                myWeaponActions.KnifeActiveWeapon();
+            }
         }
     }
 
     public void GetAttackInput(InputAction.CallbackContext aCallbackContext)
     {
-        if (aCallbackContext.phase == InputActionPhase.Started)
+        if (aCallbackContext.phase == InputActionPhase.Performed)
         {
             if (myRangedWeaponActivated)
             {
@@ -150,6 +182,49 @@ public class Player : MonoBehaviour
             {
                 Hit();
             }
+        }
+    }
+
+    public void GetDashInput(InputAction.CallbackContext aCallbackContext)
+    {
+        if (aCallbackContext.phase == InputActionPhase.Started)
+        {
+            if (!myIsDashStarted)
+            {
+                myDashTimeStamp = Time.realtimeSinceStartup;
+                Debug.Log("Dashed");
+                mySpeed *= 10;
+                myIsDashStarted = true;
+            }
+        }
+        
+    }
+
+    void CheckDashTime()
+    {
+        if (myDashTime < Time.realtimeSinceStartup - myDashTimeStamp && myIsDashStarted)
+        {
+            Debug.Log("Stopped");
+            mySpeed /= 10;
+            myIsDashStarted = false;
+        }
+    }
+
+    void PickUpWeapon(SWeapon aWeapon)
+    {
+        if (aWeapon.myIsRanged)
+        {
+            myProjectileDamage = aWeapon.myDamage;
+            myWeaponActions.SetRangedSprite(aWeapon.mySprite);
+            //SetUISprite
+            //SetProjectileSprite
+        }
+        else
+        {
+            myDamage = aWeapon.myDamage;
+            myMeleeDistance = aWeapon.myMeleeDistance;
+            myWeaponActions.SetMeleeSprite(aWeapon.mySprite);
+            //SetUISprite
         }
     }
 
