@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     float myProjectileDamage;
 
+    public AudioClip Walk;
+
     CapsuleCollider2D myCollider;
     Rigidbody2D myRigidbody;
 
@@ -62,8 +64,11 @@ public class Player : MonoBehaviour
     bool myIsLevel2 = false;
     bool myIsLevel3 = false;
 
+    AudioManager myAudioManager;
+
     void Start()
     {
+        myAudioManager = GameObject.Find("Audio Manager").GetComponent<AudioManager>();
         myCollider = GetComponent<CapsuleCollider2D>();
         myRigidbody = GetComponent<Rigidbody2D>();
         myCurrentHP = myMaxHP;
@@ -152,8 +157,10 @@ public class Player : MonoBehaviour
     {
         if (myIsMoving)
             myRigidbody.velocity = myMoveDirection * mySpeed;
+
         if (myAimDirection.x > 0)
         {
+
             myWeaponActions.TurnRight();
             mySpriteRenderer.flipX = false;
         }
@@ -162,6 +169,8 @@ public class Player : MonoBehaviour
             myWeaponActions.TurnLeft();
             mySpriteRenderer.flipX = true;
         }
+
+        myAudioManager.ActivateSound(AudioManager.ESoundNames.Walk);
     }
 
     void Shoot()
@@ -171,6 +180,8 @@ public class Player : MonoBehaviour
             GameObject projectile = Instantiate<GameObject>(myProjectile, transform.position + (Vector3)myAimDirection, Quaternion.identity, GameManager.myInstance.transform);
             projectile.GetComponent<PlayerProjectile>().SetDirection(myAimDirection, myProjectileDamage);
         }
+        myAudioManager.ActivateSound(AudioManager.ESoundNames.Range);
+
     }
 
     void Hit()
@@ -186,6 +197,8 @@ public class Player : MonoBehaviour
             }
         }
         myWeaponActions.StartAttack();
+        myAudioManager.ActivateSound(AudioManager.ESoundNames.Hit);
+
     }
 
     public void GetMovementInput(InputAction.CallbackContext aCallbackContext)

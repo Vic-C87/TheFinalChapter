@@ -5,12 +5,27 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance { get; private set; }
+
     public float gameVolume;
-    AudioSource gameSound;
+
+    private AudioSource gameSound;
+    public AudioClip walkSound;
+    public AudioClip hitSound;
+    public AudioClip whisperSound;
+    public AudioClip screamSound;
+    public AudioClip rangeSound;
+    public AudioClip meleeSound;
+    public AudioClip cryingSound;
 
     public enum ESoundNames
     {
-        Whispers
+        Whispers,
+        Walk,
+        Hit,
+        Range,
+        Melee,
+        Scream,
+        Cry,
 
     }
 
@@ -20,12 +35,14 @@ public class AudioManager : MonoBehaviour
     void Awake()
     {
         gameSound = GetComponent<AudioSource>();
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-
+        audioDictionary.Add(ESoundNames.Whispers, whisperSound);
+        audioDictionary.Add(ESoundNames.Walk, walkSound);
+        audioDictionary.Add(ESoundNames.Hit, hitSound);
+        audioDictionary.Add(ESoundNames.Scream, screamSound);
+        audioDictionary.Add(ESoundNames.Range, rangeSound);
+        audioDictionary.Add(ESoundNames.Melee, meleeSound);
+        audioDictionary.Add(ESoundNames.Cry, cryingSound);
     }
 
     public void ActivateSound(ESoundNames sounds)

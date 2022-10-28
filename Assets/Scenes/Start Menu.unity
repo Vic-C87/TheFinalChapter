@@ -1268,10 +1268,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Audio Manager
       objectReference: {fileID: 0}
-    - target: {fileID: 4198085315258057186, guid: 5adced6142586c54a8ca9cee485a1716, type: 3}
-      propertyPath: gameVolume
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 4198085315258057188, guid: 5adced6142586c54a8ca9cee485a1716, type: 3}
       propertyPath: m_RootOrder
       value: 3
