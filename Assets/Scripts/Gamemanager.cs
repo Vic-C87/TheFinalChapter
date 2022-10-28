@@ -19,6 +19,9 @@ public class GameManager : MonoBehaviour
     public LevelManager myLevelManager;
     public SpawnManager mySpawnManager;
 
+    [SerializeField]
+    GameObject myHealthPickUp;
+
     void Awake()
     {
         if (myInstance != null && myInstance != this)
@@ -134,6 +137,14 @@ public class GameManager : MonoBehaviour
     public HUDManager GetHUDManager()
     {
         return FindObjectOfType<HUDManager>();
+    }
+
+    public void DropHealth(Vector3 aPosition)
+    {
+        if (Random.Range(1, 10) < 4)
+        {
+            Instantiate<GameObject>(myHealthPickUp, aPosition, Quaternion.identity, this.transform);
+        }
     }
 }
 

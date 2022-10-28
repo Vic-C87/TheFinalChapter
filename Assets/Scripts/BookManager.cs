@@ -40,8 +40,6 @@ public class BookManager : MonoBehaviour
 
     [SerializeField]
     GameObject myContinueButton;
-    [SerializeField]
-    GameObject myEndLevelButton;
 
     bool myStartBookOpen = false;
     bool myFirstBubbleOpen = false;
@@ -53,10 +51,13 @@ public class BookManager : MonoBehaviour
     bool myStartLevel2 = false;
     bool myStartLevel3 = false;
 
+    bool myIsLastPage = false;
+
     float myTimeStamp;
 
     float myWaitTime = 2f;
 
+    [SerializeField]
     GameObject myCurrentOpen;
     GameObject myCurrentTitleOpen;
 
@@ -144,24 +145,30 @@ public class BookManager : MonoBehaviour
             myThirdBubbleOpen = true;
             myContinueButton.SetActive(false);
         }
+        else if(myIsLastPage)
+        {
+            myIsLastPage = false;
+            EndLevel();
+        }
         else
         {
             myContinueButton.SetActive(false);
             myCurrentOpen.SetActive(false);
             myBook.SetActive(false);
+            if (myStartLevel2)
+            {
+                FindObjectOfType<SpawnManager>().ActivateZoneOne();
+                myStartLevel2 = false;
+            }
             Time.timeScale = 1;
         }
 
-        if (myStartLevel2)
-        {
-            FindObjectOfType<SpawnManager>().ActivateZoneOne();
-            myStartLevel2 = false;
-        }
+ 
     }
 
     public void EndLevel()
     {
-        myEndLevelButton.SetActive(false);
+        myContinueButton.SetActive(false);
         myCurrentOpen.SetActive(false);
         myCurrentTitleOpen.SetActive(false);
         myBook.SetActive(false);
@@ -222,7 +229,8 @@ public class BookManager : MonoBehaviour
         myBook.SetActive(true);
         myC1V5.SetActive(true);
         myCurrentOpen = myC1V5;
-        myEndLevelButton.SetActive(true);
+        myContinueButton.SetActive(true);
+        myIsLastPage = true;
     }
 
     public void Chapter2Verse1()
@@ -263,7 +271,8 @@ public class BookManager : MonoBehaviour
         myBook.SetActive(true);
         myC2V4.SetActive(true);
         myCurrentOpen = myC2V4;
-        myEndLevelButton.SetActive(true);
+        myContinueButton.SetActive(true);
+        myIsLastPage = true;
     }
 
 }

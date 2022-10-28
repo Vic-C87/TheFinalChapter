@@ -65,11 +65,14 @@ public class Player : MonoBehaviour
     bool myIsLevel2 = false;
     bool myIsLevel3 = false;
 
+    float myWalkSoundTime = 5.541f;
+    float myWalkTimeStamp;
+
     AudioManager myAudioManager;
 
     void Start()
     {
-        myAudioManager = GameObject.Find("Audio Manager").GetComponent<AudioManager>();
+        myAudioManager = FindObjectOfType<AudioManager>();
         myCollider = GetComponent<CapsuleCollider2D>();
         myRigidbody = GetComponent<Rigidbody2D>();
         myCurrentHP = myMaxHP;
@@ -98,46 +101,6 @@ public class Player : MonoBehaviour
         return myCollider;
     }
 
-    public float GetCurrentHp()
-    {
-        return myCurrentHP;
-    }
-
-    public float GetSpeed()
-    {
-        return mySpeed;
-    }
-
-    public float GetDamage()
-    {
-        return myDamage;
-    }
-
-    public float GetMeleeDistance()
-    {
-        return myMeleeDistance;
-    }
-
-    public float GetProjectileDamage()
-    {
-        return myProjectileDamage;
-    }
-
-    public Sprite GetKnifeSprite()
-    {
-        return myWeaponActions.myKnife;
-    }
-
-    public Sprite GetBowSprite()
-    {
-        return myWeaponActions.myBow;
-    }
-
-    public GameObject GetProjectile()
-    {
-        return myProjectile;
-    }
-
     public void TakeDamage(float anAmount)
     {
         myCurrentHP -= anAmount;
@@ -159,7 +122,9 @@ public class Player : MonoBehaviour
     void Move()
     {
         if (myIsMoving)
+        {
             myRigidbody.velocity = myMoveDirection * mySpeed;
+        }
 
         if (myAimDirection.x > 0)
         {
@@ -172,8 +137,6 @@ public class Player : MonoBehaviour
             myWeaponActions.TurnLeft();
             mySpriteRenderer.flipX = true;
         }
-
-        myAudioManager.ActivateSound(AudioManager.ESoundNames.Walk);
     }
 
     void Shoot()
@@ -407,6 +370,17 @@ public class Player : MonoBehaviour
             }
             myIsZone3Activated = true;
         }
+        if (collision.CompareTag("HealthPickUP"))
+        {
+            myCurrentHP += collision.GetComponent<HealtPickUp>().PickUpHealth();
+            if (myCurrentHP > myMaxHP)
+            {
+                myCurrentHP = myMaxHP;
+            }
+            myHUDManager.UpdateHealthBar();
+
+            collision.GetComponent<HealtPickUp>().Remove();
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -415,19 +389,6 @@ public class Player : MonoBehaviour
         {
             DeActivatePickUpText();
         }
-    }
-
-    public void GetSpawnInput(InputAction.CallbackContext aCallbackContext)
-    {
-        if (aCallbackContext.phase == InputActionPhase.Performed)
-        {
-
-        }
-    }
-
-    public void Level1Complete()
-    {
-        myBookManager.EndLevel1();
     }
 
     public void SetLevel2SpawnPoint()
