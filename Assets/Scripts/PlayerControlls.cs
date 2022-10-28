@@ -89,6 +89,15 @@ public partial class @PlayerControlls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Continue"",
+                    ""type"": ""Button"",
+                    ""id"": ""2c465431-f825-4276-8922-79b2f54317ab"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -168,6 +177,17 @@ public partial class @PlayerControlls : IInputActionCollection2, IDisposable
                     ""action"": ""Spawn"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""76432f36-9e40-45a5-b7fc-c0c6bdf42ff7"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Continue"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -183,6 +203,7 @@ public partial class @PlayerControlls : IInputActionCollection2, IDisposable
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_PickUpWeapon = m_Player.FindAction("PickUpWeapon", throwIfNotFound: true);
         m_Player_Spawn = m_Player.FindAction("Spawn", throwIfNotFound: true);
+        m_Player_Continue = m_Player.FindAction("Continue", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -249,6 +270,7 @@ public partial class @PlayerControlls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_PickUpWeapon;
     private readonly InputAction m_Player_Spawn;
+    private readonly InputAction m_Player_Continue;
     public struct PlayerActions
     {
         private @PlayerControlls m_Wrapper;
@@ -260,6 +282,7 @@ public partial class @PlayerControlls : IInputActionCollection2, IDisposable
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputAction @PickUpWeapon => m_Wrapper.m_Player_PickUpWeapon;
         public InputAction @Spawn => m_Wrapper.m_Player_Spawn;
+        public InputAction @Continue => m_Wrapper.m_Player_Continue;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -290,6 +313,9 @@ public partial class @PlayerControlls : IInputActionCollection2, IDisposable
                 @Spawn.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpawn;
                 @Spawn.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpawn;
                 @Spawn.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpawn;
+                @Continue.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnContinue;
+                @Continue.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnContinue;
+                @Continue.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnContinue;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -315,6 +341,9 @@ public partial class @PlayerControlls : IInputActionCollection2, IDisposable
                 @Spawn.started += instance.OnSpawn;
                 @Spawn.performed += instance.OnSpawn;
                 @Spawn.canceled += instance.OnSpawn;
+                @Continue.started += instance.OnContinue;
+                @Continue.performed += instance.OnContinue;
+                @Continue.canceled += instance.OnContinue;
             }
         }
     }
@@ -328,5 +357,6 @@ public partial class @PlayerControlls : IInputActionCollection2, IDisposable
         void OnDash(InputAction.CallbackContext context);
         void OnPickUpWeapon(InputAction.CallbackContext context);
         void OnSpawn(InputAction.CallbackContext context);
+        void OnContinue(InputAction.CallbackContext context);
     }
 }

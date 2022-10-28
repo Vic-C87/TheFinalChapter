@@ -67,6 +67,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Continue",
+                    "type": "Button",
+                    "id": "2c465431-f825-4276-8922-79b2f54317ab",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -144,6 +153,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Spawn",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "76432f36-9e40-45a5-b7fc-c0c6bdf42ff7",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Continue",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
