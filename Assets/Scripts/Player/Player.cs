@@ -82,6 +82,46 @@ public class Player : MonoBehaviour
         return myCollider;
     }
 
+    public float GetCurrentHp()
+    {
+        return myCurrentHP;
+    }
+
+    public float GetSpeed()
+    {
+        return mySpeed;
+    }
+
+    public float GetDamage()
+    {
+        return myDamage;
+    }
+
+    public float GetMeleeDistance()
+    {
+        return myMeleeDistance;
+    }
+
+    public float GetProjectileDamage()
+    {
+        return myProjectileDamage;
+    }
+
+    public Sprite GetKnifeSprite()
+    {
+        return myWeaponActions.myKnife;
+    }
+
+    public Sprite GetBowSprite()
+    {
+        return myWeaponActions.myBow;
+    }
+
+    public GameObject GetProjectile()
+    {
+        return myProjectile;
+    }
+
     public void TakeDamage(float anAmount)
     {
         myCurrentHP -= anAmount;
@@ -285,7 +325,7 @@ public class Player : MonoBehaviour
         myCurrentClosestWeapon.ActivatePickUpText(false);
         myCurrentClosestWeapon = null;
     }
- 
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -315,7 +355,7 @@ public class Player : MonoBehaviour
     {
         if (aCallbackContext.phase == InputActionPhase.Performed)
         {
-            
+
         }
     }
 }

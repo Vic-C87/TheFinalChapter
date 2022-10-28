@@ -14,10 +14,8 @@ public class WeaponActions : MonoBehaviour
     [SerializeField]
     Transform myRightFacingTransform;
 
-    [SerializeField]
-    Sprite myKnife;
-    [SerializeField]
-    Sprite myBow;
+    public Sprite myKnife;
+    public Sprite myBow;
 
     bool myIsFacingRight = true;
     bool myMeleeActivated = false;
