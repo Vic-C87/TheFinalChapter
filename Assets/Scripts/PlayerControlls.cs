@@ -98,6 +98,15 @@ public partial class @PlayerControlls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""ba91490b-f81c-4aa7-abde-2c0f8b3bf84e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -188,6 +197,17 @@ public partial class @PlayerControlls : IInputActionCollection2, IDisposable
                     ""action"": ""Continue"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""08d2f798-10f8-458e-bfe7-676507a5fd68"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -204,6 +224,7 @@ public partial class @PlayerControlls : IInputActionCollection2, IDisposable
         m_Player_PickUpWeapon = m_Player.FindAction("PickUpWeapon", throwIfNotFound: true);
         m_Player_Spawn = m_Player.FindAction("Spawn", throwIfNotFound: true);
         m_Player_Continue = m_Player.FindAction("Continue", throwIfNotFound: true);
+        m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -271,6 +292,7 @@ public partial class @PlayerControlls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_PickUpWeapon;
     private readonly InputAction m_Player_Spawn;
     private readonly InputAction m_Player_Continue;
+    private readonly InputAction m_Player_Pause;
     public struct PlayerActions
     {
         private @PlayerControlls m_Wrapper;
@@ -283,6 +305,7 @@ public partial class @PlayerControlls : IInputActionCollection2, IDisposable
         public InputAction @PickUpWeapon => m_Wrapper.m_Player_PickUpWeapon;
         public InputAction @Spawn => m_Wrapper.m_Player_Spawn;
         public InputAction @Continue => m_Wrapper.m_Player_Continue;
+        public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -316,6 +339,9 @@ public partial class @PlayerControlls : IInputActionCollection2, IDisposable
                 @Continue.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnContinue;
                 @Continue.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnContinue;
                 @Continue.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnContinue;
+                @Pause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -344,6 +370,9 @@ public partial class @PlayerControlls : IInputActionCollection2, IDisposable
                 @Continue.started += instance.OnContinue;
                 @Continue.performed += instance.OnContinue;
                 @Continue.canceled += instance.OnContinue;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -358,5 +387,6 @@ public partial class @PlayerControlls : IInputActionCollection2, IDisposable
         void OnPickUpWeapon(InputAction.CallbackContext context);
         void OnSpawn(InputAction.CallbackContext context);
         void OnContinue(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }

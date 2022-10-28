@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -70,6 +71,11 @@ public class Player : MonoBehaviour
 
     AudioManager myAudioManager;
 
+    [SerializeField]
+    GameObject myPauseMenu;
+
+    bool myGameIsPaused;
+
     private void Awake()
     {
         myAudioManager = FindObjectOfType<AudioManager>();
@@ -120,7 +126,12 @@ public class Player : MonoBehaviour
     void Die()
     {
         Debug.Log("Player died...");
-        Time.timeScale = 0;
+        Destroy(GameObject.Find("Audio Manager"));
+        Destroy(GameObject.Find("LevelManager"));
+        Destroy(GameObject.Find("Player"));
+        Destroy(GameObject.Find("HUD"));
+
+        SceneManager.LoadScene("Loose");
     }
 
     void Move()
@@ -251,6 +262,25 @@ public class Player : MonoBehaviour
             {
                 PickUpWeapon(myCurrentClosestWeapon.PickUpWeapon());
                 myHUDManager.UpdateWeaponSlots();
+            }
+        }
+    }
+
+    public void GetPauseInput(InputAction.CallbackContext aCallbackContext)
+    {
+        if (aCallbackContext.phase == InputActionPhase.Performed)
+        {
+            if (!myGameIsPaused)
+            {
+                myPauseMenu.SetActive(true);
+                myGameIsPaused = true;
+                Time.timeScale = 0f;
+            }
+            else
+            {
+                myPauseMenu.SetActive(false);
+                myGameIsPaused = false;
+                Time.timeScale = 1f;
             }
         }
     }

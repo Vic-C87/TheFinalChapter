@@ -116,6 +116,15 @@ public class Wilder : Enemy
 
     }
 
+    protected override void Die()
+    {
+        if (TryGetComponent<BossBoy>(out BossBoy boss))
+        {
+            boss.Win();
+        }
+        base.Die();
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Obstacles"))
