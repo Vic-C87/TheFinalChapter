@@ -50,15 +50,18 @@ public class BookManager : MonoBehaviour
     bool mySecondFirstVerse = false;
     bool myThirdBubbleOpen = false;
 
+    bool myStartLevel2 = false;
+    bool myStartLevel3 = false;
+
     float myTimeStamp;
 
     float myWaitTime = 2f;
 
-    GameObject nextToOpen = null;
-
     GameObject myCurrentOpen;
+    GameObject myCurrentTitleOpen;
 
     List<GameObject> mySpeechBubbles = new List<GameObject>();
+
 
     // Start is called before the first frame update
     void Awake()
@@ -97,6 +100,7 @@ public class BookManager : MonoBehaviour
         myStartBookOpen = true;
         myBook.SetActive(true);
         myC1Title.SetActive(true);
+        myCurrentTitleOpen = myC1Title;
         myTimeStamp = Time.realtimeSinceStartup;
         
         //Play Background Music
@@ -153,7 +157,14 @@ public class BookManager : MonoBehaviour
     {
         myEndLevelButton.SetActive(false);
         myCurrentOpen.SetActive(false);
+        myCurrentTitleOpen.SetActive(false);
         myBook.SetActive(false);
+        // !!!
+        myStartLevel2 = false;
+        myStartLevel3 = false;
+        // !!!
+        Time.timeScale = 1;
+        GameManager.myInstance.myLevelManager.SetNewLevel();
     }
 
     public void Chapter1Verse2()
@@ -175,6 +186,7 @@ public class BookManager : MonoBehaviour
         myThirdBubbleOpen = false;
         myBook.SetActive(false);
         Time.timeScale = 1;
+        FindObjectOfType<SpawnManager>().ActivateZoneOne();
     }
 
     public void Chapter1Verse3()
@@ -200,9 +212,52 @@ public class BookManager : MonoBehaviour
 
     public void EndLevel1()
     {
+        Time.timeScale = 0;
         myBook.SetActive(true);
         myC1V5.SetActive(true);
         myCurrentOpen = myC1V5;
+        myEndLevelButton.SetActive(true);
+    }
+
+    public void Chapter2Verse1()
+    {
+        FindObjectOfType<SpawnManager>().ActivateZoneOne();
+        Time.timeScale = 0;
+        myBook.SetActive(true);
+        myC2Title.SetActive(true);
+        myCurrentTitleOpen = myC2Title;
+        myC2V1.SetActive(true);
+        myCurrentOpen = myC2V1;
+        myContinueButton.SetActive(true);
+
+        //Debuff: Zoomed In
+    }
+
+    public void Chapter2Verse2()
+    {
+        Time.timeScale = 0;
+        myBook.SetActive(true);
+        myC2V2.SetActive(true);
+        myCurrentOpen = myC2V2;
+        myContinueButton.SetActive(true);
+        //Buff: Invulnerable for X seconds
+    }
+
+    public void Chapter2Verse3()
+    {
+        Time.timeScale = 0;
+        myBook.SetActive(true);
+        myC2V3.SetActive(true);
+        myCurrentOpen = myC2V3;
+        myContinueButton.SetActive(true);
+        //Debuff: Health goes down X%
+    }
+
+    public void EndLevel2()
+    {
+        myBook.SetActive(true);
+        myC2V4.SetActive(true);
+        myCurrentOpen = myC2V4;
         myEndLevelButton.SetActive(true);
     }
 

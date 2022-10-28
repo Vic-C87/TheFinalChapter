@@ -54,6 +54,8 @@ public class Enemy : MonoBehaviour
         if (myCurrentHP <= 0)
         {
             myCurrentHP = 0;
+            Debug.Log(myType + " died");
+            GameManager.myInstance.myLevelManager.RemoveEnemyFromList();
             Die();
         }
     }
@@ -75,7 +77,7 @@ public class Enemy : MonoBehaviour
 
     protected virtual void Die()
     {
-        Debug.Log(myType + " died");
+        
         this.gameObject.SetActive(false);
     }
 

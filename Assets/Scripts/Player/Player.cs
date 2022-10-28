@@ -56,6 +56,12 @@ public class Player : MonoBehaviour
     bool myIsZone2Activated = false;
     bool myIsZone3Activated = false;
 
+    BookManager myBookManager;
+
+    bool myIsLevel1 = false;
+    bool myIsLevel2 = false;
+    bool myIsLevel3 = false;
+
     void Start()
     {
         myCollider = GetComponent<CapsuleCollider2D>();
@@ -64,7 +70,7 @@ public class Player : MonoBehaviour
         myHUDManager = GameManager.myInstance.GetHUDManager();
         myWeaponActions = GetComponent<WeaponActions>();
         mySpriteRenderer = GetComponent<SpriteRenderer>();
-        //mySpawnManager.ActivateZoneOne();
+        myBookManager = FindObjectOfType<BookManager>();
     }
 
     void Update()
@@ -336,10 +342,14 @@ public class Player : MonoBehaviour
         if (collision.CompareTag("Zone2") && !myIsZone2Activated)
         {
             mySpawnManager.ActivateZoneTwo();
+            myBookManager.Chapter1Verse3();
+            myIsZone2Activated = true;
         }
         if (collision.CompareTag("Zone3") && !myIsZone3Activated)
         {
             mySpawnManager.ActivateZoneThree();
+            myBookManager.Chapter1Verse4();
+            myIsZone3Activated = true;
         }
     }
 
@@ -357,5 +367,10 @@ public class Player : MonoBehaviour
         {
 
         }
+    }
+
+    public void Level1Complete()
+    {
+        myBookManager.EndLevel1();
     }
 }

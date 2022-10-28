@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
 
     int myRandomizedDirectionChoice;
 
+    public LevelManager myLevelManager;
+
     void Awake()
     {
         if (myInstance != null && myInstance != this)
@@ -28,6 +30,7 @@ public class GameManager : MonoBehaviour
         }
         CreateDirectionList();
         myPlayer = FindObjectOfType<Player>();
+        myLevelManager = FindObjectOfType<LevelManager>();
     }
 
     private void Update()

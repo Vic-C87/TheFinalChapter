@@ -14,6 +14,11 @@ public class SpawnPoint : MonoBehaviour
 
     bool myIsActivated = false;
 
+    void Start()
+    {
+         GameManager.myInstance.myLevelManager.AddEnemyToList(myEnemyPrefabs.Count);
+    }
+
     void FixedUpdate()
     {
         if (myIsActivated)
