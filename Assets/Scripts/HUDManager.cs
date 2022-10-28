@@ -66,4 +66,9 @@ public class HUDManager : MonoBehaviour
     {
         myRangedWeaponSprite = aWeaponSprite;
     }
+
+    //public void ReloadPlayer()
+    //{
+    //    myPlayer = GameManager.myInstance.GetPlayer();
+    //}
 }

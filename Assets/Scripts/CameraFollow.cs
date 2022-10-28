@@ -9,6 +9,11 @@ public class CameraFollow : MonoBehaviour
 
     Vector3 myPosition;
 
+    private void Start()
+    {
+        myTarget = FindObjectOfType<Player>().transform;
+    }
+
     void LateUpdate()
     {
         myPosition = myTarget.position;
