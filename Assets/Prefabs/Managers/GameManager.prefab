@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2212086979539806163}
   - component: {fileID: 2212086979539806160}
   - component: {fileID: 2212086979539806161}
-  - component: {fileID: 294949539}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -50,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myIsFindingPath: 0
   myPlayer: {fileID: 0}
+  myLevelManager: {fileID: 0}
 --- !u!114 &2212086979539806163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,20 +98,3 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   myObstacleProximityPenalty: 10
---- !u!114 &294949539
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2212086979539806164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb06cd86e0a841f4294ede65477ffc3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myActiveWeaponSlot: {fileID: 0}
-  mySecondaryWeaponSlot: {fileID: 0}
-  myHeathBarFill: {fileID: 0}
-  myMeleeWeaponSprite: {fileID: 21300000, guid: 364f852969700af45bb806c90de52927, type: 3}
-  myRangedWeaponSprite: {fileID: 21300000, guid: bc1421909475cd44481171b467b7d6a7, type: 3}

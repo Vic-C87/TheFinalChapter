@@ -71,6 +71,8 @@ public class Player : MonoBehaviour
         myWeaponActions = GetComponent<WeaponActions>();
         mySpriteRenderer = GetComponent<SpriteRenderer>();
         myBookManager = FindObjectOfType<BookManager>();
+        mySpawnManager = FindObjectOfType<SpawnManager>();
+        myIsLevel1 = true;
     }
 
     void Update()
@@ -332,6 +334,21 @@ public class Player : MonoBehaviour
         myCurrentClosestWeapon = null;
     }
 
+    public void SetLevel(int aLevelID)
+    {
+        if (aLevelID == 2)
+        {
+            myIsLevel2 = true;
+            myIsLevel1 = false;
+            myIsLevel3 = false;
+        }
+        else if (aLevelID == 3)
+        {
+            myIsLevel2 = false;
+            myIsLevel1 = false;
+            myIsLevel3 = true;
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -342,13 +359,27 @@ public class Player : MonoBehaviour
         if (collision.CompareTag("Zone2") && !myIsZone2Activated)
         {
             mySpawnManager.ActivateZoneTwo();
-            myBookManager.Chapter1Verse3();
+            if (myIsLevel1)
+            {
+                myBookManager.Chapter1Verse3();
+            }
+            if (myIsLevel2)
+            {
+                myBookManager.Chapter2Verse2();
+            }
             myIsZone2Activated = true;
         }
         if (collision.CompareTag("Zone3") && !myIsZone3Activated)
         {
             mySpawnManager.ActivateZoneThree();
-            myBookManager.Chapter1Verse4();
+            if (myIsLevel1)
+            {
+                myBookManager.Chapter1Verse4();
+            }
+            if (myIsLevel2)
+            {
+                myBookManager.Chapter2Verse3();
+            }
             myIsZone3Activated = true;
         }
     }

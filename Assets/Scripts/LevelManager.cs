@@ -57,6 +57,7 @@ public class LevelManager : MonoBehaviour
             myIsLevel2 = true;
             myLevelIsComplete = false;
             SceneManager.LoadScene("Level-2");
+            GameManager.myInstance.GetPlayer().SetLevel(2);
             FindObjectOfType<BookManager>().Chapter2Verse1();
         }
     }

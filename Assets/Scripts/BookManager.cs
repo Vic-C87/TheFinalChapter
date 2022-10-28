@@ -229,7 +229,7 @@ public class BookManager : MonoBehaviour
         myC2V1.SetActive(true);
         myCurrentOpen = myC2V1;
         myContinueButton.SetActive(true);
-
+        myStartLevel2 = true;
         //Debuff: Zoomed In
     }
 

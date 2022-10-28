@@ -126,7 +126,7 @@ public class GameManager : MonoBehaviour
 
     public HUDManager GetHUDManager()
     {
-        return GetComponent<HUDManager>();
+        return FindObjectOfType<HUDManager>();
     }
 }
 
