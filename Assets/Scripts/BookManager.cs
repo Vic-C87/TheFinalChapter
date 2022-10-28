@@ -39,7 +39,8 @@ public class BookManager : MonoBehaviour
     public GameObject myThirdBubble;
 
     bool myStartBookOpen = false;
-    
+    bool myFirstBubbleOpen = false;
+    bool myFirstFirstVerse = false;
 
     float myTimeStamp;
 
@@ -47,22 +48,32 @@ public class BookManager : MonoBehaviour
 
     GameObject nextToOpen = null;
 
+    GameObject myCurrentOpen;
+
     List<GameObject> mySpeechBubbles = new List<GameObject>();
 
     // Start is called before the first frame update
     void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
+        Time.timeScale = 0;
+        OpenBookChapterOneTitle();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(myWaitTime < Time.realtimeSinceStartup - myTimeStamp && myStartBookOpen)
+        if (myWaitTime < Time.realtimeSinceStartup - myTimeStamp && myStartBookOpen)
         {
-            OpenSpeechBubble();
+            OpenSpeechBubbleOne();
+        }
+        if (myWaitTime < Time.realtimeSinceStartup - myTimeStamp && myFirstBubbleOpen)
+        {
+            Chapter1Verse1();
         }
     }
+
+
 
     public void OpenBookChapterOneTitle()
     {
@@ -70,15 +81,26 @@ public class BookManager : MonoBehaviour
         myBook.SetActive(true);
         myC1Title.SetActive(true);
         myTimeStamp = Time.realtimeSinceStartup;
-        mySpeechBubbles.Add(myFirstBubble);
-        mySpeechBubbles.Add(mySecondBubble);
-        mySpeechBubbles.Add(myThirdBubble);
+        
         //Play Background Music
     }
 
-    public void OpenSpeechBubble()
+    public void OpenSpeechBubbleOne()
     {
-       
+        mySpeechBubble.SetActive(true);
+        myFirstBubble.SetActive(true);
+        myStartBookOpen = false;
+        myTimeStamp = Time.realtimeSinceStartup;
+        myFirstBubbleOpen = true;
+    }
+    public void Chapter1Verse1()
+    {
+        myFirstBubble.SetActive(false);
+        mySpeechBubble.SetActive(false);
+        myFirstBubbleOpen = false;
+        myC1V1.SetActive(true);
+        myCurrentOpen = myC1V1;
+        myFirstFirstVerse = true;
     }
 
 }

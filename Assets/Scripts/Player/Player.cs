@@ -64,7 +64,7 @@ public class Player : MonoBehaviour
         myHUDManager = GameManager.myInstance.GetHUDManager();
         myWeaponActions = GetComponent<WeaponActions>();
         mySpriteRenderer = GetComponent<SpriteRenderer>();
-        mySpawnManager.ActivateZoneOne();
+        //mySpawnManager.ActivateZoneOne();
     }
 
     void Update()
