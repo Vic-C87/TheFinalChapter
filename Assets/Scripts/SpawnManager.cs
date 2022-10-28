@@ -6,48 +6,36 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     [SerializeField]
-    GameObject myRangedEnemy;
-    [SerializeField]
-    int myRangedAmountToSpawn;
-    [SerializeField]
-    GameObject myMeleeEnemy;
-    [SerializeField]
-    int myMeleeAmountToSpawn;
-    [SerializeField]
-    GameObject myLurker;
-    [SerializeField]
-    int myLurkerAmountToSpawn;
-    [SerializeField]
-    GameObject myWilder;
-    [SerializeField]
-    int myWilderAmountToSpawn;
+    List<SpawnPoint> myZoneOneSpawnPoints;
 
     [SerializeField]
-    Transform[] mySpawnPoints;
+    List<SpawnPoint> myZoneTwoSpawnPoints;
+
+    [SerializeField]
+    List<SpawnPoint> myZoneThreeSpawnPoints;
 
 
-    void Start()
+    public void ActivateZoneOne()
     {
-        mySpawnPoints = GetComponentsInChildren<Transform>();
-    }
-
-    public void SpawnAll()
-    {
-        Spawn(myRangedEnemy, mySpawnPoints[1].position, ref myRangedAmountToSpawn);
-        
-        Spawn(myMeleeEnemy, mySpawnPoints[2].position, ref myMeleeAmountToSpawn);
-
-        Spawn(myLurker, mySpawnPoints[3].position, ref myLurkerAmountToSpawn);
-
-        Spawn(myWilder, mySpawnPoints[4].position, ref myWilderAmountToSpawn);
-    }
-
-    void Spawn(GameObject anEnemyPrefabToSpawn, Vector3 aPositionToSpawnAt, ref int anAmountLeft)
-    {
-        if (anAmountLeft > 0)
+        foreach (SpawnPoint point in myZoneOneSpawnPoints)
         {
-            Instantiate<GameObject>(anEnemyPrefabToSpawn, aPositionToSpawnAt, Quaternion.identity, this.transform);
-            anAmountLeft--;
+            point.ActivateSpawner();
+        }
+    }
+
+    public void ActivateZoneTwo()
+    {
+        foreach (SpawnPoint point in myZoneTwoSpawnPoints)
+        {
+            point.ActivateSpawner();
+        }
+    }
+
+    public void ActivateZoneThree()
+    {
+        foreach (SpawnPoint point in myZoneThreeSpawnPoints)
+        {
+            point.ActivateSpawner();
         }
     }
 }

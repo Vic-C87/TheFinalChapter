@@ -9,11 +9,12 @@ public class Wilder : Enemy
     bool myHaveWanderDirection = false;
     int myActionChoice;
     float myActionTimeStamp;
+    [SerializeField]
     float myActionTime;
     Vector2 myWanderDirection;
 
     [SerializeField]
-    GameObject myProjectile;
+    List<GameObject> myProjectiles;
 
     LayerMask myEnemyLayerMask;
 
@@ -32,7 +33,7 @@ public class Wilder : Enemy
     {
         if (!myHaveAction)
         {
-            myActionChoice = GameManager.myInstance.GetRandomNumber(1, 2);
+            myActionChoice = GameManager.myInstance.GetRandomNumber(1, 3);
             myHaveAction = true;
             myActionTimeStamp = Time.realtimeSinceStartup;
         }
@@ -43,6 +44,9 @@ public class Wilder : Enemy
                 Wander();
                 break;
             case 2:
+                Wander();
+                break;
+            case 3:
                 Attack();
                 break;
             default:
@@ -63,7 +67,7 @@ public class Wilder : Enemy
             {
                 myFoundLineOfSight = false;
             }
-            else
+            else if (hit.collider.CompareTag("Player"))
             {
                 myFoundLineOfSight = true;
             }
@@ -77,7 +81,7 @@ public class Wilder : Enemy
         {
             if (CheckAttack())
             {
-                GameObject projectile = Instantiate<GameObject>(myProjectile, transform.position, Quaternion.identity, GameManager.myInstance.transform);
+                GameObject projectile = Instantiate<GameObject>(myProjectiles[GetRandomProjectileIndex()], transform.position, Quaternion.identity, GameManager.myInstance.transform);
                 projectile.GetComponent<Projectile>().SetDirection((myPlayer.transform.position - transform.position).normalized, myDamage);
             }
         }
@@ -85,6 +89,12 @@ public class Wilder : Enemy
         {
             myHaveAction = false;
         }
+    }
+
+    int GetRandomProjectileIndex()
+    {
+
+        return GameManager.myInstance.GetRandomNumber(0, myProjectiles.Count - 1);
     }
 
     void Wander()

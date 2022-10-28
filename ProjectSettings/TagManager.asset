@@ -7,6 +7,8 @@ TagManager:
   - Enemy
   - Obstacles
   - PickUp
+  - Zone2
+  - Zone3
   layers:
   - Default
   - TransparentFX
