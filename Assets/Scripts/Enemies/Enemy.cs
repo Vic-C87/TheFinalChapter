@@ -27,12 +27,15 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     ParticleSystem myParticleSystem;
 
+    AudioSource myHurtSound;
+
     protected virtual void Start()
     {
         myCurrentHP = myCurrentHP == 0 ? myMaxHP : myCurrentHP;
         myPlayer = GameManager.myInstance.GetPlayer();
         mySpriteRenderer = GetComponent<SpriteRenderer>();
         myCapsulecollider = GetComponent<CapsuleCollider2D>();
+        myHurtSound = GetComponentInChildren<AudioSource>();
     }
 
     protected virtual void Update()
@@ -51,6 +54,7 @@ public class Enemy : MonoBehaviour
     {
         myCurrentHP -= someDamage;
         myParticleSystem.Play();
+        myHurtSound.Play();
         if (myCurrentHP <= 0)
         {
             myCurrentHP = 0;
@@ -77,7 +81,7 @@ public class Enemy : MonoBehaviour
 
     protected virtual void Die()
     {
-        
+        GameManager.myInstance.DropHealth(transform.position);
         this.gameObject.SetActive(false);
     }
 

@@ -43,6 +43,7 @@ public class AudioManager : MonoBehaviour
         audioDictionary.Add(ESoundNames.Range, rangeSound);
         audioDictionary.Add(ESoundNames.Melee, meleeSound);
         audioDictionary.Add(ESoundNames.Cry, cryingSound);
+        DontDestroyOnLoad(this.gameObject);
     }
 
     public void ActivateSound(ESoundNames sounds)

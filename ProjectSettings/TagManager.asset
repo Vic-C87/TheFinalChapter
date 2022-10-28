@@ -9,6 +9,7 @@ TagManager:
   - PickUp
   - Zone2
   - Zone3
+  - HealthPickUP
   layers:
   - Default
   - TransparentFX
