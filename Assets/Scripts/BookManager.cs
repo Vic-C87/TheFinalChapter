@@ -63,12 +63,15 @@ public class BookManager : MonoBehaviour
 
     List<GameObject> mySpeechBubbles = new List<GameObject>();
 
+    Whispers myWhispers;
+    bool myWhispersArePlaying = false;
 
     // Start is called before the first frame update
     void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
         Time.timeScale = 0;
+        myWhispers = GetComponentInChildren<Whispers>();
         OpenBookChapterOneTitle();
     }
 
@@ -92,6 +95,16 @@ public class BookManager : MonoBehaviour
             BubblesCompleted();
         }
 
+        if (myBook.activeSelf && !myWhispersArePlaying)
+        {
+            myWhispers.playWispers();
+            myWhispersArePlaying = true;
+        }
+        else if (!myBook.activeSelf && myWhispersArePlaying)
+        {
+            myWhispers.StopWhispers();
+            myWhispersArePlaying = false;
+        }
     }
 
 

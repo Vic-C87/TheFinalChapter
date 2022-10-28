@@ -22,4 +22,9 @@ public class Whispers : MonoBehaviour
     {
         audioSourceWhispers.Play();
     }
+
+    public void StopWhispers()
+    {
+        audioSourceWhispers.Stop();
+    }
 }
