@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class HUDManager : MonoBehaviour
 {
@@ -17,12 +18,19 @@ public class HUDManager : MonoBehaviour
     [SerializeField]
     Sprite myRangedWeaponSprite;
 
+    [SerializeField]
+    GameObject myEnemiesLeftHolder;
+    [SerializeField]
+    TextMeshProUGUI myEnemiesLeftValue;
+
+
+
     Player myPlayer;
 
     // Start is called before the first frame update
     void Start()
     {
-        myPlayer = GameManager.myInstance.GetPlayer();
+        myPlayer = FindObjectOfType<Player>();
         SetUI();
     }
 
@@ -55,6 +63,16 @@ public class HUDManager : MonoBehaviour
             myActiveWeaponSlot.sprite = myMeleeWeaponSprite;
             mySecondaryWeaponSlot.sprite = myRangedWeaponSprite;
         }
+    }
+
+    public void ActivateEnemiesLeftHolder(bool AToogle)
+    {
+        myEnemiesLeftHolder.SetActive(AToogle);
+    }
+
+    public void SetEnemiesLeftValue(int anAmount)
+    {
+        myEnemiesLeftValue.text = anAmount.ToString();
     }
 
     public void SetNewMeleeSprite(Sprite aWeaponSprite)

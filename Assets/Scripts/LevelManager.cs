@@ -55,10 +55,16 @@ public class LevelManager : MonoBehaviour
     public void RemoveEnemyFromList()
     {
         myEnemiesInLevel--;
-        if (myEnemiesInLevel < 1)
+        if (myEnemiesInLevel < 6)
         {
-            myLevelIsComplete = true;
+            FindObjectOfType<HUDManager>().ActivateEnemiesLeftHolder(true);
+            FindObjectOfType<HUDManager>().SetEnemiesLeftValue(myEnemiesInLevel);
+            if (myEnemiesInLevel < 1)
+            {
+                myLevelIsComplete = true;
+            }
         }
+        
     }
 
     public void SetNewLevel()
@@ -81,5 +87,6 @@ public class LevelManager : MonoBehaviour
             GameManager.myInstance.GetPlayer().SetLevel(3);
             //FindObjectOfType<BookManager>().Chapter3Verse1();
         }
+        FindObjectOfType<HUDManager>().ActivateEnemiesLeftHolder(false);
     }
 }

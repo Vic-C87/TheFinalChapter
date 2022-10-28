@@ -70,20 +70,24 @@ public class Player : MonoBehaviour
 
     AudioManager myAudioManager;
 
-    void Start()
+    private void Awake()
     {
         myAudioManager = FindObjectOfType<AudioManager>();
         myCollider = GetComponent<CapsuleCollider2D>();
         myRigidbody = GetComponent<Rigidbody2D>();
         myCurrentHP = myMaxHP;
-        myHUDManager = GameManager.myInstance.GetHUDManager();
+        myHUDManager = FindObjectOfType<HUDManager>();
         myWeaponActions = GetComponent<WeaponActions>();
         mySpriteRenderer = GetComponent<SpriteRenderer>();
         myBookManager = FindObjectOfType<BookManager>();
         mySpawnManager = FindObjectOfType<SpawnManager>();
         myIsLevel1 = true;
         DontDestroyOnLoad(this.gameObject);
-        myHUDManager.UpdateHealthBar();
+    }
+
+    void Start()
+    {
+
     }
 
     void Update()
