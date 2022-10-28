@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 6691952099202858974}
   - component: {fileID: 5591075590182869781}
   - component: {fileID: 5328946446257208032}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Boss Boy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,7 +104,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -141,13 +141,18 @@ MonoBehaviour:
   myType: Boss Boy
   mySpeed: 3
   myCurrentHP: 0
-  myMaxHP: 100
+  myMaxHP: 500
   myDamage: 2
   myAttackRate: 1
   myPlayer: {fileID: 0}
-  myParticleSystem: {fileID: 0}
-  myActionTime: 0
-  myProjectiles: []
+  myParticleSystem: {fileID: 4266818313502202426}
+  myActionTime: 2
+  myProjectiles:
+  - {fileID: 7673367092569420156, guid: 48e4a7f2a76dedd48b569b6af9138005, type: 3}
+  - {fileID: 7673367092569420156, guid: 39665fc607867214c9e7a06a61603b24, type: 3}
+  - {fileID: 7673367092569420156, guid: a7f2eab690552634d9b7e4e25004e3f9, type: 3}
+  - {fileID: 7673367092569420156, guid: 2335d32e414a8d44bbc3d832c532a56d, type: 3}
+  - {fileID: 7673367092569420156, guid: 1df3c84b3ed41e94686c934e7b22bafe, type: 3}
 --- !u!1001 &5308520769534344490
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -267,6 +272,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ae2460a2ecbac0449822d42ba6e1ca8, type: 3}
+--- !u!198 &4266818313502202426 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5252200271463713173, guid: 4ae2460a2ecbac0449822d42ba6e1ca8, type: 3}
+  m_PrefabInstance: {fileID: 8346675304506332079}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4266818313502202427 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5252200271463713172, guid: 4ae2460a2ecbac0449822d42ba6e1ca8, type: 3}
