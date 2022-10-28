@@ -102,11 +102,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myType: Wilder
-  mySpeed: 5
+  mySpeed: 3
   myCurrentHP: 0
-  myMaxHP: 10
-  myDamage: 2
-  myAttackRate: 1
+  myMaxHP: 25
+  myDamage: 5
+  myAttackRate: 1.5
   myPlayer: {fileID: 0}
   myParticleSystem: {fileID: 6123758241419243378}
   myActionTime: 2

@@ -139,14 +139,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myType: Boss Boy
-  mySpeed: 3
+  mySpeed: 1.5
   myCurrentHP: 0
   myMaxHP: 500
   myDamage: 2
-  myAttackRate: 1
+  myAttackRate: 1.5
   myPlayer: {fileID: 0}
   myParticleSystem: {fileID: 4266818313502202426}
-  myActionTime: 2
+  myActionTime: 3
   myProjectiles:
   - {fileID: 7673367092569420156, guid: 48e4a7f2a76dedd48b569b6af9138005, type: 3}
   - {fileID: 7673367092569420156, guid: 39665fc607867214c9e7a06a61603b24, type: 3}

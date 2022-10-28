@@ -186,8 +186,8 @@ MonoBehaviour:
   mySpeed: 0
   myCurrentHP: 0
   myMaxHP: 10
-  myDamage: 2
-  myAttackRate: 1
+  myDamage: 5
+  myAttackRate: 2
   myPlayer: {fileID: 0}
   myParticleSystem: {fileID: 797319172420962717}
   myEnemyLayerMask:

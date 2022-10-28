@@ -106,8 +106,8 @@ MonoBehaviour:
   myType: Melee
   mySpeed: 0
   myCurrentHP: 0
-  myMaxHP: 10
-  myDamage: 2
+  myMaxHP: 15
+  myDamage: 3
   myAttackRate: 1
   myPlayer: {fileID: 0}
   myParticleSystem: {fileID: 4024858673298635453}

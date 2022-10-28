@@ -57,8 +57,11 @@ public class LevelManager : MonoBehaviour
         myEnemiesInLevel--;
         if (myEnemiesInLevel < 6)
         {
-            FindObjectOfType<HUDManager>().ActivateEnemiesLeftHolder(true);
-            FindObjectOfType<HUDManager>().SetEnemiesLeftValue(myEnemiesInLevel);
+            if (!myIsLevel3)
+            {
+                FindObjectOfType<HUDManager>().ActivateEnemiesLeftHolder(true);
+                FindObjectOfType<HUDManager>().SetEnemiesLeftValue(myEnemiesInLevel);
+            }
             if (myEnemiesInLevel < 1)
             {
                 myLevelIsComplete = true;

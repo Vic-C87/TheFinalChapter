@@ -141,7 +141,7 @@ public class GameManager : MonoBehaviour
 
     public void DropHealth(Vector3 aPosition)
     {
-        if (Random.Range(1, 10) < 4)
+        if (Random.Range(1, 21)  < 3)
         {
             Instantiate<GameObject>(myHealthPickUp, aPosition, Quaternion.identity, this.transform);
         }
