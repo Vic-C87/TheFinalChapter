@@ -10,6 +10,8 @@ public class PlayerProjectile : MonoBehaviour
     float myLifeTime;
     [SerializeField]
     float myDamage;
+    [SerializeField]
+    float myRotationSpeed;
 
     float myInstantiationTime;
 
@@ -35,6 +37,8 @@ public class PlayerProjectile : MonoBehaviour
     void FixedUpdate()
     {
         transform.position += (Vector3)myDirection * mySpeed * Time.deltaTime;
+        transform.RotateAround(transform.position, Vector3.forward, myRotationSpeed * 360 * Time.deltaTime);
+
     }
 
     public void SetDirection(Vector2 aDirection, float aDamageAmount = 0)

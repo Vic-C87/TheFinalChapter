@@ -53,6 +53,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     SpawnManager mySpawnManager;
 
+    bool myIsZone2Activated = false;
+    bool myIsZone3Activated = false;
+
     void Start()
     {
         myCollider = GetComponent<CapsuleCollider2D>();
@@ -61,6 +64,7 @@ public class Player : MonoBehaviour
         myHUDManager = GameManager.myInstance.GetHUDManager();
         myWeaponActions = GetComponent<WeaponActions>();
         mySpriteRenderer = GetComponent<SpriteRenderer>();
+        mySpawnManager.ActivateZoneOne();
     }
 
     void Update()
@@ -237,6 +241,7 @@ public class Player : MonoBehaviour
             myProjectileDamage = aWeapon.myDamage;
             myWeaponActions.SetRangedSprite(aWeapon.mySprite);
             myHUDManager.SetNewRangedWeaponSprite(aWeapon.mySprite);
+            myRangedWeaponActivated = true;
             //SetProjectileSprite
         }
         else
@@ -245,6 +250,7 @@ public class Player : MonoBehaviour
             myMeleeDistance = aWeapon.myMeleeDistance;
             myWeaponActions.SetMeleeSprite(aWeapon.mySprite);
             myHUDManager.SetNewMeleeSprite(aWeapon.mySprite);
+            myRangedWeaponActivated = false;
         }
     }
 
@@ -287,6 +293,14 @@ public class Player : MonoBehaviour
         {
             SetCurrentClosestWeaponToPickUp(collision.GetComponent<Weapon>());
         }
+        if (collision.CompareTag("Zone2") && !myIsZone2Activated)
+        {
+            mySpawnManager.ActivateZoneTwo();
+        }
+        if (collision.CompareTag("Zone3") && !myIsZone3Activated)
+        {
+            mySpawnManager.ActivateZoneThree();
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -301,7 +315,7 @@ public class Player : MonoBehaviour
     {
         if (aCallbackContext.phase == InputActionPhase.Performed)
         {
-            mySpawnManager.SpawnAll();
+            
         }
     }
 }
