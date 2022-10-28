@@ -52,6 +52,10 @@ public class Seeker : MonoBehaviour
 
     IEnumerator FollowPath()
     {
+        if (myPath.Length == 0)
+        {
+            yield break;
+        }
         Vector3 currentWaypoint = myPath[0];
 
         while (true)
