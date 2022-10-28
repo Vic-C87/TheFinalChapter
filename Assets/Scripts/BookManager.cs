@@ -38,9 +38,17 @@ public class BookManager : MonoBehaviour
     [SerializeField]
     public GameObject myThirdBubble;
 
+    [SerializeField]
+    GameObject myContinueButton;
+    [SerializeField]
+    GameObject myEndLevelButton;
+
     bool myStartBookOpen = false;
     bool myFirstBubbleOpen = false;
     bool myFirstFirstVerse = false;
+    bool mySecondBubbleOpen = false;
+    bool mySecondFirstVerse = false;
+    bool myThirdBubbleOpen = false;
 
     float myTimeStamp;
 
@@ -71,6 +79,15 @@ public class BookManager : MonoBehaviour
         {
             Chapter1Verse1();
         }
+        if (myWaitTime < Time.realtimeSinceStartup - myTimeStamp && mySecondBubbleOpen)
+        {
+            Chapter1Verse2();
+        }
+        if (myWaitTime < Time.realtimeSinceStartup - myTimeStamp && myThirdBubbleOpen)
+        {
+            BubblesCompleted();
+        }
+
     }
 
 
@@ -99,8 +116,94 @@ public class BookManager : MonoBehaviour
         mySpeechBubble.SetActive(false);
         myFirstBubbleOpen = false;
         myC1V1.SetActive(true);
-        myCurrentOpen = myC1V1;
         myFirstFirstVerse = true;
+        myContinueButton.SetActive(true);
+    }
+
+    public void Continue()
+    {
+        if (myFirstFirstVerse)
+        {
+            mySpeechBubble.SetActive(true);
+            mySecondBubble.SetActive(true);
+            myFirstFirstVerse = false;
+            myTimeStamp = Time.realtimeSinceStartup;
+            mySecondBubbleOpen = true;
+            myContinueButton.SetActive(false);
+        }
+        else if (mySecondFirstVerse)
+        {
+            mySpeechBubble.SetActive(true);
+            myThirdBubble.SetActive(true);
+            mySecondFirstVerse = false;
+            myTimeStamp= Time.realtimeSinceStartup;
+            myThirdBubbleOpen = true;
+            myContinueButton.SetActive(false);
+        }
+        else
+        {
+            myContinueButton.SetActive(false);
+            myCurrentOpen.SetActive(false);
+            myBook.SetActive(false);
+            Time.timeScale = 1;
+        }
+    }
+
+    public void EndLevel()
+    {
+        myEndLevelButton.SetActive(false);
+        myCurrentOpen.SetActive(false);
+        myBook.SetActive(false);
+    }
+
+    public void Chapter1Verse2()
+    {
+        mySecondBubble.SetActive(false);
+        mySpeechBubble.SetActive(false);
+        myC1V1.SetActive(false);
+        mySecondBubbleOpen = false;
+        myC1V2.SetActive(true);
+        mySecondFirstVerse = true;
+        myContinueButton.SetActive(true);
+    }
+
+    public void BubblesCompleted()
+    {
+        myThirdBubble.SetActive(false);
+        mySpeechBubble.SetActive(false);
+        myC1V2.SetActive(false);
+        myThirdBubbleOpen = false;
+        myBook.SetActive(false);
+        Time.timeScale = 1;
+    }
+
+    public void Chapter1Verse3()
+    {
+        Time.timeScale = 0;
+        myBook.SetActive(true);
+        myC1V3.SetActive(true);
+        myCurrentOpen = myC1V3;
+        myContinueButton.SetActive(true);
+        //Debuff: SLOW
+    }
+
+    public void Chapter1Verse4()
+    {
+        Time.timeScale = 0;
+        myBook.SetActive(true);
+        myC1V4.SetActive(true);
+        myCurrentOpen = myC1V4;
+        myContinueButton.SetActive(true);
+        //Remove Debuff: SLOW
+        //Buff: size/DMG
+    }
+
+    public void EndLevel1()
+    {
+        myBook.SetActive(true);
+        myC1V5.SetActive(true);
+        myCurrentOpen = myC1V5;
+        myEndLevelButton.SetActive(true);
     }
 
 }
