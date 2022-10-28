@@ -31,7 +31,19 @@ public class LevelManager : MonoBehaviour
     {
         if (myLevelIsComplete)
         {
-            FindObjectOfType<BookManager>().EndLevel1();
+            if (myIsLevel1)
+            {
+                FindObjectOfType<BookManager>().EndLevel1();
+            }
+            else if (myIsLevel2)
+            {
+                FindObjectOfType<BookManager>().EndLevel2();
+            }
+            else if(myIsLevel3)
+            {
+                Debug.Log("Game Complete");
+            }
+
         }
     }
 
@@ -59,6 +71,15 @@ public class LevelManager : MonoBehaviour
             SceneManager.LoadScene("Level-2");
             GameManager.myInstance.GetPlayer().SetLevel(2);
             FindObjectOfType<BookManager>().Chapter2Verse1();
+        }
+        else if (myIsLevel2)
+        {
+            myIsLevel2 = false;
+            myIsLevel3 = true;
+            myLevelIsComplete = false;
+            SceneManager.LoadScene("Level-3 BOSS");
+            GameManager.myInstance.GetPlayer().SetLevel(3);
+            //FindObjectOfType<BookManager>().Chapter3Verse1();
         }
     }
 }

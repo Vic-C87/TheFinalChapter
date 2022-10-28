@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField]
     float myMaxHP;
+    [SerializeField]
     float myCurrentHP;
     [SerializeField]
     float mySpeed;
@@ -78,6 +79,8 @@ public class Player : MonoBehaviour
         myBookManager = FindObjectOfType<BookManager>();
         mySpawnManager = FindObjectOfType<SpawnManager>();
         myIsLevel1 = true;
+        DontDestroyOnLoad(this.gameObject);
+        myHUDManager.UpdateHealthBar();
     }
 
     void Update()
@@ -354,13 +357,22 @@ public class Player : MonoBehaviour
             myIsLevel2 = true;
             myIsLevel1 = false;
             myIsLevel3 = false;
+            SetLevel2SpawnPoint();
         }
         else if (aLevelID == 3)
         {
             myIsLevel2 = false;
             myIsLevel1 = false;
             myIsLevel3 = true;
+            SetLevel3SpawnPoint();
         }
+        myIsZone2Activated = false;
+        myIsZone3Activated = false;
+    }
+
+    public void SetSpawnManager()
+    {
+        mySpawnManager = FindObjectOfType<SpawnManager>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -416,5 +428,15 @@ public class Player : MonoBehaviour
     public void Level1Complete()
     {
         myBookManager.EndLevel1();
+    }
+
+    public void SetLevel2SpawnPoint()
+    {
+        transform.position = new Vector3(-98, -1, 0);
+    }
+
+    public void SetLevel3SpawnPoint()
+    {
+        transform.position = new Vector3(-9, 2, 0);
     }
 }

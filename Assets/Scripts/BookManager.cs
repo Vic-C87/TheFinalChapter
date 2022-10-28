@@ -151,6 +151,12 @@ public class BookManager : MonoBehaviour
             myBook.SetActive(false);
             Time.timeScale = 1;
         }
+
+        if (myStartLevel2)
+        {
+            FindObjectOfType<SpawnManager>().ActivateZoneOne();
+            myStartLevel2 = false;
+        }
     }
 
     public void EndLevel()
@@ -221,7 +227,6 @@ public class BookManager : MonoBehaviour
 
     public void Chapter2Verse1()
     {
-        FindObjectOfType<SpawnManager>().ActivateZoneOne();
         Time.timeScale = 0;
         myBook.SetActive(true);
         myC2Title.SetActive(true);
