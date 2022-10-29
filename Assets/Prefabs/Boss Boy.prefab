@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6691952099202858974}
   - component: {fileID: 5591075590182869781}
   - component: {fileID: 5328946446257208032}
+  - component: {fileID: 1839294660564362448}
   m_Layer: 8
   m_Name: Boss Boy
   m_TagString: Enemy
@@ -153,6 +154,20 @@ MonoBehaviour:
   - {fileID: 7673367092569420156, guid: a7f2eab690552634d9b7e4e25004e3f9, type: 3}
   - {fileID: 7673367092569420156, guid: 2335d32e414a8d44bbc3d832c532a56d, type: 3}
   - {fileID: 7673367092569420156, guid: 1df3c84b3ed41e94686c934e7b22bafe, type: 3}
+  myBossBoy: {fileID: 0}
+  myBossBoyFound: 0
+--- !u!114 &1839294660564362448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5128294725409964736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ad0f3334057d8445b0b8ab315bdd9bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5308520769534344490
 PrefabInstance:
   m_ObjectHideFlags: 0

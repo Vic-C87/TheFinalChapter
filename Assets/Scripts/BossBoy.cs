@@ -19,11 +19,6 @@ public class BossBoy : MonoBehaviour
 
     public void Win()
     {
-        Destroy(GameObject.Find("Audio Manager"));
-        Destroy(GameObject.Find("LevelManager"));
-        Destroy(GameObject.Find("Player"));
-        Destroy(GameObject.Find("HUD"));
-
-        SceneManager.LoadScene("WinScreen");
+        FindObjectOfType<BookManager>().EndLevel3();
     }
 }

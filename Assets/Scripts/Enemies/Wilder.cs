@@ -18,10 +18,18 @@ public class Wilder : Enemy
 
     LayerMask myEnemyLayerMask;
 
+    [SerializeField]
+    BossBoy myBossBoy = null;
+    [SerializeField]
+    bool myBossBoyFound = false;
+    bool mySecondVerseToShow = true;
+    bool myThirdVerseToShow = true;
+
     protected override void Start()
     {
         base.Start();
         myEnemyLayerMask = ~(1 << LayerMask.NameToLayer("Enemies"));
+        myBossBoyFound = TryGetComponent<BossBoy>(out myBossBoy);
     }
 
     void FixedUpdate()
@@ -116,11 +124,29 @@ public class Wilder : Enemy
 
     }
 
+    public override void TakeDamage(float someDamage)
+    {
+        if (myBossBoyFound)
+        {
+            if (myCurrentHP < 0.5 * myMaxHP && mySecondVerseToShow)
+            {
+                mySecondVerseToShow = false;
+                FindObjectOfType<BookManager>().Chapter3Verse2();
+            }
+            if (myCurrentHP < 0.2 * myMaxHP && myThirdVerseToShow)
+            {
+                myThirdVerseToShow = false;
+                FindObjectOfType<BookManager>().Chapter3Verse3();
+            }
+        }
+        base.TakeDamage(someDamage);
+    }
+
     protected override void Die()
     {
-        if (TryGetComponent<BossBoy>(out BossBoy boss))
+        if (myBossBoyFound)
         {
-            boss.Win();
+            myBossBoy.Win();
         }
         base.Die();
     }

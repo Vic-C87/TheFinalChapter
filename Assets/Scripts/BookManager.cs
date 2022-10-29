@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BookManager : MonoBehaviour
 {
@@ -28,6 +29,16 @@ public class BookManager : MonoBehaviour
     public GameObject myC2V3;
     [SerializeField]
     public GameObject myC2V4;
+    [SerializeField]
+    public GameObject myC3Title;
+    [SerializeField]
+    public GameObject myC3V1;
+    [SerializeField]
+    public GameObject myC3V2;
+    [SerializeField]
+    public GameObject myC3V3;
+    [SerializeField]
+    public GameObject myC3V4;
 
     [SerializeField]
     public GameObject mySpeechBubble;
@@ -186,11 +197,23 @@ public class BookManager : MonoBehaviour
         myCurrentTitleOpen.SetActive(false);
         myBook.SetActive(false);
         // !!!
-        myStartLevel2 = false;
-        myStartLevel3 = false;
         // !!!
         Time.timeScale = 1;
-        GameManager.myInstance.myLevelManager.SetNewLevel();
+        if (myStartLevel3)
+        {
+            Destroy(GameObject.Find("Audio Manager"));
+            Destroy(GameObject.Find("LevelManager"));
+            Destroy(GameObject.Find("Player"));
+            SceneManager.LoadScene("WinScreen");
+
+            Destroy(GameObject.Find("HUD"));
+        }
+        else
+        {
+            myStartLevel2 = false;
+            myStartLevel3 = false;
+            GameManager.myInstance.myLevelManager.SetNewLevel();
+        }
     }
 
     public void Chapter1Verse2()
@@ -281,9 +304,53 @@ public class BookManager : MonoBehaviour
 
     public void EndLevel2()
     {
+        Time.timeScale = 0;
         myBook.SetActive(true);
         myC2V4.SetActive(true);
         myCurrentOpen = myC2V4;
+        myContinueButton.SetActive(true);
+        myIsLastPage = true;
+    }
+
+    public void Chapter3Verse1()
+    {
+        Time.timeScale = 0;
+        myBook.SetActive(true);
+        myC3Title.SetActive(true);
+        myCurrentTitleOpen = myC3Title;
+        myC3V1.SetActive(true);
+        myCurrentOpen = myC3V1;
+        myContinueButton.SetActive(true);
+        myStartLevel3 = true;
+        
+    }
+
+    public void Chapter3Verse2()
+    {
+        Time.timeScale = 0;
+        myBook.SetActive(true);
+        myC3V2.SetActive(true);
+        myCurrentOpen = myC3V2;
+        myContinueButton.SetActive(true);
+        //Debuff: Dash disabled
+    }
+
+    public void Chapter3Verse3()
+    {
+        Time.timeScale = 0;
+        myBook.SetActive(true);
+        myC3V3.SetActive(true);
+        myCurrentOpen = myC3V3;
+        myContinueButton.SetActive(true);
+        //Debuff: Full health
+    }
+
+    public void EndLevel3()
+    {
+        Time.timeScale = 0;
+        myBook.SetActive(true);
+        myC3V4.SetActive(true);
+        myCurrentOpen = myC3V4;
         myContinueButton.SetActive(true);
         myIsLastPage = true;
     }

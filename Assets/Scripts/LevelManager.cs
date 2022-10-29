@@ -41,7 +41,7 @@ public class LevelManager : MonoBehaviour
             }
             else if(myIsLevel3)
             {
-                Debug.Log("Game Complete");
+                
             }
 
         }
@@ -88,7 +88,7 @@ public class LevelManager : MonoBehaviour
             myLevelIsComplete = false;
             SceneManager.LoadScene("Level-3 BOSS");
             GameManager.myInstance.GetPlayer().SetLevel(3);
-            //FindObjectOfType<BookManager>().Chapter3Verse1();
+            FindObjectOfType<BookManager>().Chapter3Verse1();
         }
         FindObjectOfType<HUDManager>().ActivateEnemiesLeftHolder(false);
     }

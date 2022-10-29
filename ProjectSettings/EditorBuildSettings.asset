@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level-3 BOSS.unity
     guid: 6e5b8f93ebfe20844b48d6c65c664088
+  - enabled: 1
+    path: Assets/Scenes/Loose.unity
+    guid: 303cc48dce823c94bbe2adee1b720a18
+  - enabled: 1
+    path: Assets/Scenes/WinScreen.unity
+    guid: 7a2c693371b9c4f4bb7cbb0d52c22120
   m_configObjects: {}
